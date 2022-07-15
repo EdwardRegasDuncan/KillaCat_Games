@@ -4,16 +4,15 @@ using UnityEngine;
 
 enum DICES
 {
-    D3 = 0,
-    D4 = 1,
-    D6 = 2,
-    D10 = 3,
-    COUNT = 4,
+    D4 = 0,
+    D6 = 1,
+    D10 = 2,
+    COUNT = 3,
 }
 
 public class DiceTosser : MonoBehaviour
 {
-    [Header("Each element is a dice type (D3/D4/D6/D10)")]
+    [Header("Each element is a dice type (D4/D6/D10)")]
     public GameObject[] DicePrefabs;
     public int[] DiceAmounts;
 
