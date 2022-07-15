@@ -155,8 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f60fff9f27ac5547b4cc634cd924fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DicePrefab: {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
-  NumberOfDices: 1
+  DicePrefabs:
+  - {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
+  - {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
+  - {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
+  - {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
+  DiceAmounts: 00000000000000000100000000000000
 --- !u!65 &409160485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -228,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409160483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7170439, y: 2.0033512, z: -3.130519}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []

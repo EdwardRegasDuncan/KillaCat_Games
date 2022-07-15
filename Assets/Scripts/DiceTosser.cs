@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum DICES
+{
+    D3 = 0,
+    D4 = 1,
+    D6 = 2,
+    D10 = 3,
+    COUNT = 4,
+}
+
 public class DiceTosser : MonoBehaviour
 {
-    public GameObject DicePrefab;
+    [Header("Each element is a dice type (D3/D4/D6/D10)")]
+    public GameObject[] DicePrefabs;
+    public int[] DiceAmounts;
 
-    public int NumberOfDices = 1;
-
-    List<Dice> Dices = new List<Dice>();
+    List<Dice>[] Dices = new List<Dice>[(int)DICES.COUNT];
 
     Plane Plane;
 
@@ -18,6 +27,9 @@ public class DiceTosser : MonoBehaviour
     void Start()
     {
         Plane = new Plane(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
+
+        for (int i = 0; i < (int)DICES.COUNT; ++i)
+            Dices[i] = new List<Dice>();
     }
 
     void Update()
@@ -51,26 +63,29 @@ public class DiceTosser : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            int difference = Dices.Count - NumberOfDices;
-            if (difference > 0)
+            for (int i = 0; i < (int)DICES.COUNT; ++i)
             {
-                for (int i = 0; i < difference; ++i)
+                int difference = Dices[i].Count - DiceAmounts[i];
+                if (difference > 0)
                 {
-                    Destroy(Dices[Dices.Count - 1]);
-                    Dices.RemoveAt(Dices.Count - 1);
+                    for (int j = 0; j < difference; ++j)
+                    {
+                        Destroy(Dices[i][Dices[i].Count - 1]);
+                        Dices[i].RemoveAt(Dices[i].Count - 1);
+                    }
                 }
-            }
-            else if (difference < 0)
-            {
-                difference *= -1;
-                for (int i = 0; i < difference; ++i)
+                else if (difference < 0)
                 {
-                    Dices.Add(Instantiate(DicePrefab).GetComponent<Dice>());
+                    difference *= -1;
+                    for (int j = 0; j < difference; ++j)
+                    {
+                        Dices[i].Add(Instantiate(DicePrefabs[i]).GetComponent<Dice>());
+                    }
                 }
-            }
 
-            for (int i = 0; i < Dices.Count; ++i)
-                Dices[i].TossDice();
+                for (int j = 0; j < Dices[i].Count; ++j)
+                    Dices[i][j].TossDice();
+            }
         }
     }
 
