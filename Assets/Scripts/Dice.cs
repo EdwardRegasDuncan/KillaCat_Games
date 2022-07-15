@@ -55,6 +55,11 @@ public class Dice : MonoBehaviour
         Tossed = false;
     }
 
+    public bool Selectable()
+    {
+        return !Tossed;
+    }
+
     void ActivateTriggers(bool active)
     {
         for (int i = 0; i < Triggers.Length; ++i)

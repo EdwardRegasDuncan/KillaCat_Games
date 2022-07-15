@@ -10,9 +10,45 @@ public class DiceTosser : MonoBehaviour
 
     List<Dice> Dices = new List<Dice>();
 
-    // Update is called once per frame
+    Plane Plane;
+
+    Dice SelectedDice;
+    bool Dragging;
+
+    void Start()
+    {
+        Plane = new Plane(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
+    }
+
     void Update()
     {
+        if (Input.GetMouseButtonDown(0) && !Dragging)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 50f, 1 << 6))
+            {
+                SelectedDice = hit.transform.GetComponent<Dice>();
+                if (SelectedDice.Selectable())
+                    Dragging = true;
+                else
+                    SelectedDice = null;
+            }
+        }
+        if (Dragging)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float distance;
+            if (Plane.Raycast(ray, out distance))
+                SelectedDice.transform.position = ray.origin + ray.direction * distance;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Dragging = false;
+            SelectedDice = null;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             int difference = Dices.Count - NumberOfDices;
@@ -38,7 +74,7 @@ public class DiceTosser : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         other.transform.parent.GetComponent<Dice>().TriggerDetection(other.gameObject.name);
     }
