@@ -4,41 +4,42 @@ using UnityEngine;
 
 public class DiceTosser : MonoBehaviour
 {
-    public GameObject Dice;
+    public GameObject DicePrefab;
 
-    public bool tossed = false;
+    public int NumberOfDices = 1;
+
+    List<Dice> Dices = new List<Dice>();
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TossDice();
+            int difference = Dices.Count - NumberOfDices;
+            if (difference > 0)
+            {
+                for (int i = 0; i < difference; ++i)
+                {
+                    Destroy(Dices[Dices.Count - 1]);
+                    Dices.RemoveAt(Dices.Count - 1);
+                }
+            }
+            else if (difference < 0)
+            {
+                difference *= -1;
+                for (int i = 0; i < difference; ++i)
+                {
+                    Dices.Add(Instantiate(DicePrefab).GetComponent<Dice>());
+                }
+            }
 
-            tossed = true;
+            for (int i = 0; i < Dices.Count; ++i)
+                Dices[i].TossDice();
         }
-    }
-
-    void TossDice()
-    {
-        Rigidbody rb = Dice.GetComponent<Rigidbody>();
-        Dice.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
-        Dice.transform.rotation = new Quaternion(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        rb.AddForce(Random.Range(0, 250), Random.Range(0, 250), Random.Range(0, 250));
-        rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!tossed) return;
-
-        if (other.transform.parent.GetComponent<Rigidbody>().velocity == Vector3.zero)
-        {
-            string[] splittedName = other.gameObject.name.Split('_');
-
-            Debug.Log("Dice face:" + other.gameObject.name);
-
-            tossed = false;
-        }
+        other.transform.parent.GetComponent<Dice>().TriggerDetection(other.gameObject.name);
     }
 }
