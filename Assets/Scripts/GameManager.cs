@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
 
     public int[] DiceAmounts;
 
+
     int Score = 0;
+    bool Waiting = false;
 
     SCREENS CurrentScreen;
     GAME_STATES GameState;
@@ -39,12 +41,6 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-    }
-
-    void Start()
-    {
-        GameState = GAME_STATES.ROLL_STAGE;
-        EnterState();
     }
 
     void Update()
@@ -59,17 +55,19 @@ public class GameManager : MonoBehaviour
     public void ChangeScreen(SCREENS newScreen)
     {
         CurrentScreen = newScreen;
+        UIManager.ChangeScreen(newScreen);
 
         switch (newScreen)
         {
             case SCREENS.MENUS:
                 break;
             case SCREENS.IN_GAME:
+                GameState = GAME_STATES.ROLL_STAGE;
+                EnterState();
                 break;
             case SCREENS.RESULT:
                 break;
         }
-        UIManager.ChangeScreen(newScreen);
     } 
 
     void EnterState()
@@ -77,8 +75,7 @@ public class GameManager : MonoBehaviour
         switch (GameState)
         {
             case GAME_STATES.ROLL_STAGE:
-                DiceTosser.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
-                DiceTosser.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
+                StartCoroutine(RollStage());
                 break;
             case GAME_STATES.PLACEMENT:
                 UnitPlacer.Placing = true;
@@ -90,6 +87,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator RollStage()
+    {
+        // Waiting the first space to toss the dices
+        UIManager.ShowPressKeyText(true, "Space", "toss the dices");
+        while (!Input.GetKeyDown(KeyCode.Space))
+            yield return null;
+        UIManager.ShowPressKeyText(false);
+
+        // Toss the dices
+        DiceTosser.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
+        DiceTosser.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
+
+        // Waiting the dices values
+        Waiting = true;
+        while (Waiting)
+            yield return null;
+
+        // Waiting the space to continue with the next state
+        UIManager.ShowPressKeyText(true, "Space", "continue");
+        while (!Input.GetKeyDown(KeyCode.Space))
+            yield return null;
+        UIManager.ShowPressKeyText(false);
+
+
+        ChangeState();
+    }
+
     void ChangeState()
     {
         GameState = (GAME_STATES)(((int)GameState + 1) % (int)GAME_STATES.COUNT);
@@ -99,6 +123,6 @@ public class GameManager : MonoBehaviour
     public void DiceValues(List<int>[] diceValues, List<int>[] enemyDiceValues)
     {
         DiceTosser.ShowDicesToScreen();
-        ChangeState();
+        Waiting = false;
     }
 }
