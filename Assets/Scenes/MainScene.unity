@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &345584192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 72.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245159, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375714222043245163, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_Name
+      value: Trops
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964573571761107092, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964573571761107092, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751311376962727868, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1692150757}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e1eca21b20699b44a8ddbb107e721a8, type: 3}
 --- !u!114 &380768075 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4286897899736072748, guid: 7ea6c816f6840c4438a44250c7592f56, type: 3}
@@ -306,7 +375,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0701754, y: 1}
+    m_SensorSize: {x: 2.0778668, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -404,7 +473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1021,7 +1089,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0701754, y: 1}
+    m_SensorSize: {x: 2.0778668, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
