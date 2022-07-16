@@ -30,14 +30,15 @@ public class UnitCore : MonoBehaviour
     public Team team = Team.Player;
     public Material[] teamMaterials;
     public NavMeshAgent agent;
-    bool pause;
+    public bool pause;
+
+    public int maxHealth = 100;
 
     public HealthBar healthBar;
 
     public UnitCore()
     {
         team = Team.Enemy;
-        _HP = 100;
         _Speed = 0.0f;
         _AttackDamage = 0.0f;
         _AttackSpeed = 0.0f;
@@ -58,15 +59,13 @@ public class UnitCore : MonoBehaviour
         float ArmourPiercing)
     {
         team = assignedTeam;
-        _HP = HP;
         _Speed = Speed;
         _AttackDamage = AttackDamage;
         _AttackSpeed = AttackSpeed;
         _Range = Range;
         _Armour = Armour;
         _ArmourPiercing = ArmourPiercing;
-
-        healthBar.SetMaxHealth(_HP);
+        _HP = HP;
     }
 
     public bool FindTarget()
@@ -122,6 +121,9 @@ public class UnitCore : MonoBehaviour
         agent.speed = _Speed;
         agent.stoppingDistance = _Range;
         GetComponentInChildren<Renderer>().material = teamMaterials[(int)team];
+
+        maxHealth = _HP;
+        healthBar.SetMaxHealth(maxHealth);  
     }
 
     private void Update()
