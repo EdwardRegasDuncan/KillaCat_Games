@@ -612,6 +612,7 @@ MonoBehaviour:
   InGame: {fileID: 1446350559}
   ScoreText: {fileID: 751461000}
   PressKeyText: {fileID: 380768075}
+  ReadyButton: {fileID: 1332645419201280222}
 --- !u!114 &1331578676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1432,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ea6c816f6840c4438a44250c7592f56, type: 3}
+--- !u!114 &1332645419201280222 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5592448541526286959, guid: 7ea6c816f6840c4438a44250c7592f56, type: 3}
+  m_PrefabInstance: {fileID: 1332645419201280221}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1390872325663782893
 PrefabInstance:
   m_ObjectHideFlags: 0
