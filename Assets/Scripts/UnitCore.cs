@@ -1,0 +1,145 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class UnitCore : MonoBehaviour
+{
+    public enum Team {
+        Player,
+        Enemy
+    }
+
+    public float _HP;
+    public float _Speed;
+    public float _AttackDamage;
+    public float _AttackSpeed; // In seconds
+    bool _attackCooldown = false;
+    public float _Range;
+    public float _Armour; // percentage of damage blocked
+    public float _ArmourPiercing; // amount of armour to ignore
+    public bool _isAlive = true;
+    Transform _target;
+    public Team team = Team.Player;
+    public NavMeshAgent agent;
+    bool pause;
+
+    public UnitCore()
+    {
+        team = Team.Enemy;
+        _HP = 100f;
+        _Speed = 0.0f;
+        _AttackDamage = 0.0f;
+        _AttackSpeed = 0.0f;
+        _Range = 0.0f;
+        _Armour = 0.0f;
+        _ArmourPiercing = 0.0f;
+    }
+    public UnitCore(
+        Team assignedTeam,
+        float HP,
+        float Speed,
+        float AttackDamage,
+        float AttackSpeed,
+        float Range,
+        float Armour,
+        float ArmourPiercing)
+    {
+        team = assignedTeam;
+        _HP = HP;
+        _Speed = Speed;
+        _AttackDamage = AttackDamage;
+        _AttackSpeed = AttackSpeed;
+        _Range = Range;
+        _Armour = Armour;
+        _ArmourPiercing = ArmourPiercing;
+    }
+
+    public bool FindTarget()
+    {
+        Team targetTag = team == Team.Player ? Team.Enemy : Team.Player;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(targetTag.ToString());
+        if (enemies.Length == 0)
+        {
+            return false;
+        }
+        // get closest gameobject with tag
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        foreach (GameObject enemy in enemies)
+        {
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < distance)
+            {
+                distance = dist;
+                closest = enemy;
+            }
+        }
+        _target = closest.transform;
+        return true;
+    }
+    
+    public IEnumerator AttackCooldown()
+    {
+        _attackCooldown = true;
+        yield return new WaitForSeconds(_AttackSpeed);
+        _attackCooldown = false;
+    }
+
+    public void TakeDamage(float damage, float armourPiercing)
+    {
+        float finalArmour = _Armour - armourPiercing;
+        float finalDamage = damage - (finalArmour/100 * damage);
+
+        _HP -= finalDamage;
+        
+        if (_HP <= 0)
+        {
+            _isAlive = false;
+        }
+    }
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        gameObject.tag = team.ToString();
+        agent.speed = _Speed;
+        agent.stoppingDistance = _Range;
+    }
+
+    private void Update()
+    {
+        if (pause)
+        {
+            return;
+        }
+
+        if (!_isAlive)
+        {
+            // record death
+            
+            Destroy(gameObject);
+        }
+
+        if (!_target)
+        {
+            if (!FindTarget())
+            {
+                pause = true;
+            }
+        }
+        // check if in range of _target
+        if (Vector3.Distance(transform.position, _target.position) > _Range)
+        {
+            agent.SetDestination(_target.position);
+        }
+        else if (!_attackCooldown)
+        {
+            _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
+            _attackCooldown = true;
+            //StartCoroutine(AttackCooldown());
+        }
+        
+    }
+
+}
