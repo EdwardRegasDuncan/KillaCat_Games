@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SCREENS
+{
+    MENUS = 0,
+    IN_GAME = 1,
+    RESULT = 2
+}
+
 public enum GAME_STATES
 {
     ROLL_STAGE = 0,
@@ -23,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     int Score = 0;
 
+    SCREENS CurrentScreen;
     GAME_STATES GameState;
 
     void Awake()
@@ -47,6 +55,22 @@ public class GameManager : MonoBehaviour
             UIManager.UpdateScore(Score);
         }
     }
+
+    public void ChangeScreen(SCREENS newScreen)
+    {
+        CurrentScreen = newScreen;
+
+        switch (newScreen)
+        {
+            case SCREENS.MENUS:
+                break;
+            case SCREENS.IN_GAME:
+                break;
+            case SCREENS.RESULT:
+                break;
+        }
+        UIManager.ChangeScreen(newScreen);
+    } 
 
     void EnterState()
     {
