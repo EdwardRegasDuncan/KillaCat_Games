@@ -22,7 +22,7 @@ public class Dice : MonoBehaviour
             Triggers[i] = transform.GetChild(i);
 
         Renderer.material.SetColor("_Color", Color.red);
-        ActivateTriggers(false);
+        ActivateDice(false);
         Tossed = false;
     }
 
@@ -31,13 +31,13 @@ public class Dice : MonoBehaviour
         if (!DiceSetup)
             Setup();
 
-        transform.position = new Vector3(0.0f, 5.0f, 0.0f);
+        transform.position = new Vector3(85f, 10f, 6f);
         transform.rotation = new Quaternion(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        Rigidbody.AddForce(Random.Range(0, 250), Random.Range(0, 250), Random.Range(0, 250));
+        Rigidbody.AddForce(-1000, Random.Range(0, 250), Random.Range(0, 250));
         Rigidbody.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
 
         Renderer.material.SetColor("_Color", Color.red);
-        ActivateTriggers(true);
+        ActivateDice(true);
         Tossed = true;
     }
 
@@ -51,12 +51,22 @@ public class Dice : MonoBehaviour
         Debug.Log("Dice face:" + triggerName);
 
         Renderer.material.SetColor("_Color", Color.green);
-        ActivateTriggers(false);
+        ActivateDice(false);
         Tossed = false;
     }
 
-    void ActivateTriggers(bool active)
+    public bool Selectable()
     {
+        return !Tossed;
+    }
+
+    void ActivateDice(bool active)
+    {
+        if (active)
+            Rigidbody.constraints = RigidbodyConstraints.None;
+        else
+            Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
         for (int i = 0; i < Triggers.Length; ++i)
             Triggers[i].gameObject.SetActive(active);
     }
