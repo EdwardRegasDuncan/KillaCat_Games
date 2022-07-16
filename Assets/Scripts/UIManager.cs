@@ -8,11 +8,19 @@ public class UIManager : MonoBehaviour
     public GameObject Menu;
     public GameObject InGame;
 
+    [Header("InGameUI")]
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI PressKeyText;
 
     public void UpdateScore(int newScore)
     {
         ScoreText.text = newScore.ToString();
+    }
+
+    public void ShowPressKeyText(bool show, string key = null, string action = null)
+    {
+        if (show) PressKeyText.text = "Press [" + key + "] to " + action;
+        PressKeyText.gameObject.SetActive(show);
     }
 
     public void ChangeScreen(SCREENS newScreen)
