@@ -40,11 +40,7 @@ public class GameManager : MonoBehaviour
     public Transform EnemySide;
     public UnityEvent ResetGrid;
 
-    List<GameObject> InstantiatedUnits = new List<GameObject>();
-
-    Transform GridNode;
-
-    Vector3 SelectedArea;
+    GridNode GridNode;
 
     int Score = 0;
     bool Waiting = false;
@@ -100,8 +96,10 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(Placement());
                 break;
             case GAME_STATES.COMBAT:
+                StartCoroutine(Combat());
                 break;
             case GAME_STATES.DAMAGE_PHASE:
+                StartCoroutine(DamagePhase());
                 break;
         }
     }
@@ -120,16 +118,23 @@ public class GameManager : MonoBehaviour
 
         // Wait all dice to be placed
         Waiting = true;
-        bool showReadyButton = false;
+        bool readyButton = false;
         while (Waiting)
         {
-            if (!showReadyButton && DiceManager.GetDicesInMovement() <= 0)
+            if (!readyButton && DiceManager.GetDicesInMovement() <= 0)
+            {
+                readyButton = true;
                 UIManager.ActiveReadyButton(true);
-            else if (showReadyButton && DiceManager.GetDicesInMovement() > 0)
+            }
+            else if (readyButton && DiceManager.GetDicesInMovement() > 0)
+            {
+                readyButton = false;
                 UIManager.ActiveReadyButton(false);
+            }
 
             yield return null;
         }
+        UIManager.ActiveReadyButton(false);
 
         // Get back the board
         CameraManager.SetBoardCamera();
@@ -143,8 +148,8 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceManager.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
-        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
+        DiceManager.TossDices(DiceAmounts, new Vector3(84f, 10f, -18f), -800, false);
+        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, -18f), 1000, true);
 
         // Waiting the dices values
         Waiting = true;
@@ -178,50 +183,47 @@ public class GameManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000f, 1 << 8))
             {
-                if (hit.transform.parent == PlayerSide && !hit.transform.GetComponent<GridNode>().Used)
+                GridNode gridNode = hit.transform.GetComponent<GridNode>();
+                if (hit.transform.parent == PlayerSide && !gridNode.Used)
                 {
-                    if (GridNode != hit.transform)
+                    if (GridNode != gridNode)
                     {
                         if (GridNode != null)
                         {
-                            GridNode.position = SelectedArea;
-                            GridNode = null;
+                            GridNode.Unselect();
+                            UIManager.ShowInfoText(false);
                         }
-                        GridNode = hit.transform;
-                        SelectedArea = GridNode.position;
-                        GridNode.position += new Vector3(0.0f, 2.0f, 0.0f);
+                        GridNode = gridNode;
+
+                        string msg = GridNode.Select(playerDices[i].DiceValue);
+                        if (msg != null) UIManager.ShowInfoText(true, msg);
                     }
                     if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
                     {
-                        InstantiatedUnits.Add(Instantiate(UnitPrefabs[(int)playerDices[i].UnitType]));
-                        InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
-
-                        GridNode.position = SelectedArea;
-                        GridNode.GetComponent<GridNode>().Used = true;
+                        UIManager.ShowInfoText(false);
+                        GridNode.Unselect();
+                        GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[i].UnitType], playerDices[i].DiceValue);
                         GridNode = null;
 
                         i += 1;
                     }
                 }
-                else
+                else if (GridNode != null)
                 {
-                    if (GridNode != null)
-                    {
-                        GridNode.position = SelectedArea;
-                        GridNode = null;
-                    }
+                    UIManager.ShowInfoText(false);
+                    GridNode.Unselect();
+                    GridNode = null;
                 }
             }
             else if (GridNode != null)
             {
-                GridNode.position = SelectedArea;
+                UIManager.ShowInfoText(false);
+                GridNode.Unselect();
                 GridNode = null;
             }
 
             yield return null;
         }
-
-        ResetGrid.Invoke();
 
         // Waiting the space to continue with the next state
         UIManager.ShowPressKeyText(true, "Space", "fight");
@@ -230,6 +232,18 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         ChangeState();
+    }
+
+    IEnumerator Combat()
+    {
+        yield return null;
+    }
+
+    IEnumerator DamagePhase()
+    { 
+        yield return null;
+
+        ResetGrid.Invoke();
     }
 
     void ChangeState()

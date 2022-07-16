@@ -181,7 +181,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b65ac606f6a2dd64caab406f346d42e1, type: 2}
   - {fileID: 2100000, guid: 8873bce7b8cdc1c4f9c392011d66fc28, type: 2}
   agent: {fileID: 0}
-  healthBar: {fileID: 0}
+  pause: 1
+  maxHealth: 100
+  healthBar: {fileID: 7233877626022616060}
 --- !u!1001 &2977614731806192848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -285,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 6337685841743936596, guid: 648bc744a565c3643865b45424fa05bf, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 648bc744a565c3643865b45424fa05bf, type: 3}
 --- !u!224 &1447027837540946691 stripped
@@ -292,3 +298,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4415353873237927891, guid: 648bc744a565c3643865b45424fa05bf, type: 3}
   m_PrefabInstance: {fileID: 2977614731806192848}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7233877626022616060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5562360662501257004, guid: 648bc744a565c3643865b45424fa05bf, type: 3}
+  m_PrefabInstance: {fileID: 2977614731806192848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b777ae3daffca741b527e16367fc985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
