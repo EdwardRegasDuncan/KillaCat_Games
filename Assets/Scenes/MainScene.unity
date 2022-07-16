@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
   - {fileID: 3170798661715953083, guid: 1b375322106bc8d448f96fa0b2bfd340, type: 3}
   DiceAmounts: 020000000100000003000000
+  cam: {fileID: 1692150756}
 --- !u!65 &409160485
 BoxCollider:
   m_ObjectHideFlags: 0
