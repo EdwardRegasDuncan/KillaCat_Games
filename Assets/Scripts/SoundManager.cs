@@ -13,7 +13,8 @@ public class SoundManager
         TropSpell,
         TropDead,
         TropPlacing,
-        UISound
+        UISound,
+        BackGroundMusic
     }
 
     public static Dictionary<Sound, float> soundTimerDictionary;

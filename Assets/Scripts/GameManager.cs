@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
                 break;
             case SCREENS.IN_GAME:
                 GameState = GAME_STATES.ROLL_STAGE;
+                SoundManager.PlaySound(SoundManager.Sound.BackGroundMusic);
                 EnterState();
                 break;
             case SCREENS.RESULT:

@@ -44,4 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cfbe4f8278db740904b808f4743b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TropMove: {fileID: 0}
+  soundAudioClipArray:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: f81b804b0649a3e4babca18e08266cff, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: 0acc7753087223d40bd605d93f9728d7, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: cf6e10b4a8f26fb42863b5d80a13367c, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 4311b6752f7e8354eb93e0edf7047538, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 475c2c6c2b3f426419055d3a497e0df1, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: 44e8f967fd78a0c4d8c0e75255a4714c, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 770a8e2e00bcfdc4abe574f3f9397f42, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: 335fb2320820eb147af1d6543127d874, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: 7bb1d118ed0447e40afa88440657b6b2, type: 3}
