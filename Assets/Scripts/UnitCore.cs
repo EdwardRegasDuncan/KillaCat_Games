@@ -17,7 +17,7 @@ public class UnitCore : MonoBehaviour
         WIZARD
     }
 
-    public float _HP;
+    public int _HP;
     public float _Speed;
     public float _AttackDamage;
     public float _AttackSpeed; // In seconds
@@ -32,12 +32,12 @@ public class UnitCore : MonoBehaviour
     public NavMeshAgent agent;
     bool pause;
 
-    public TMP_Text HPText;
+    public HealthBar healthBar;
 
     public UnitCore()
     {
         team = Team.Enemy;
-        _HP = 100f;
+        _HP = 100;
         _Speed = 0.0f;
         _AttackDamage = 0.0f;
         _AttackSpeed = 0.0f;
@@ -47,7 +47,7 @@ public class UnitCore : MonoBehaviour
     }
     public UnitCore(
         Team assignedTeam,
-        float HP,
+        int HP,
         float Speed,
         float AttackDamage,
         float AttackSpeed,
@@ -63,6 +63,8 @@ public class UnitCore : MonoBehaviour
         _Range = Range;
         _Armour = Armour;
         _ArmourPiercing = ArmourPiercing;
+
+        healthBar.SetMaxHealth(_HP);
     }
 
     public bool FindTarget()
@@ -101,8 +103,10 @@ public class UnitCore : MonoBehaviour
         float finalArmour = _Armour - armourPiercing;
         float finalDamage = damage -  Mathf.Clamp(finalArmour/100 * damage, 0, 100);
 
-        _HP -= finalDamage;
-        
+        _HP -= (int)finalDamage;
+
+        healthBar.SetHealth(_HP);
+
         if (_HP <= 0)
         {
             _isAlive = false;
@@ -124,8 +128,6 @@ public class UnitCore : MonoBehaviour
         {
             return;
         }
-
-        HPText.text = _HP.ToString();
 
         if (!_isAlive)
         {
@@ -167,7 +169,11 @@ public class UnitCore : MonoBehaviour
             _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
             StartCoroutine(AttackCooldown());
         }
-        
-    }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20f, 5f);
+        }
+
+    }
 }
