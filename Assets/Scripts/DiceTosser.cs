@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum DICES
-{
-    D4 = 0,
-    D6 = 1,
-    D10 = 2,
-    COUNT = 3,
-}
-
 public class DiceTosser : MonoBehaviour
 {
     [Header("Each element is a dice type (D4/D6/D10)")]
@@ -17,18 +9,24 @@ public class DiceTosser : MonoBehaviour
     public int[] DiceAmounts;
 
     List<Dice>[] Dices = new List<Dice>[(int)DICES.COUNT];
+    List<int>[] DiceValues = new List<int>[(int)DICES.COUNT];
 
     Plane Plane;
 
     Dice SelectedDice;
     bool Dragging;
 
+    int DiceInMovement = 0;
+
     void Start()
     {
         Plane = new Plane(Vector3.up, new Vector3(0.0f, 2.5f, 0.0f));
 
         for (int i = 0; i < (int)DICES.COUNT; ++i)
+        {
             Dices[i] = new List<Dice>();
+            DiceValues[i] = new List<int>();
+        }
     }
 
     void Update()
@@ -70,6 +68,8 @@ public class DiceTosser : MonoBehaviour
     {
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
+            DiceValues[i].Clear();
+
             int difference = Dices[i].Count - diceAmounts[i];
             if (difference > 0)
             {
@@ -89,12 +89,25 @@ public class DiceTosser : MonoBehaviour
             }
 
             for (int j = 0; j < Dices[i].Count; ++j)
+            {
+                DiceInMovement += 1;
                 Dices[i][j].TossDice();
+            }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        other.transform.parent.GetComponent<Dice>().TriggerDetection(other.gameObject.name);
+        Dice dice = other.transform.parent.GetComponent<Dice>();
+
+        int aux = dice.TriggerDetection(other.gameObject.name);
+        if (aux != -1)
+        {
+            DiceValues[(int)dice.Type].Add(aux);
+            DiceInMovement -= 1;
+
+            if (DiceInMovement <= 0)
+                GameManager.Instance.DiceValues(DiceValues);
+        }
     }
 }

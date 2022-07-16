@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         if (Instance != null)
             Destroy(this);
         else
-            Instance = null;
+            Instance = this;
     }
 
     void Start()
@@ -68,5 +68,10 @@ public class GameManager : MonoBehaviour
     {
         GameState = (GAME_STATES)(((int)GameState + 1) % (int)GAME_STATES.COUNT);
         EnterState();
+    }
+
+    public void DiceValues(List<int>[] diceValues)
+    {
+
     }
 }

@@ -429,6 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a3aa0a579054b49a4b6cf00e54b208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 2
+  DiceValue: -1
 --- !u!1 &3338389241441193546
 GameObject:
   m_ObjectHideFlags: 0
