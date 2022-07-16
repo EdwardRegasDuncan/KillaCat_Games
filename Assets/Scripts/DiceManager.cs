@@ -11,6 +11,7 @@ public class DiceManager : MonoBehaviour
     public GameObject[] DicePrefabs;
 
     public Transform Inventory;
+    public Transform EnemyInventory;
     public Transform DiceSpawner;
     public Camera cam;
 
@@ -20,6 +21,7 @@ public class DiceManager : MonoBehaviour
     int EnemyDiceAmount = 0;
 
     int DiceInMovement = 0;
+    int DiceInSelection = 0;
 
     bool DraggingEnable = false;
 
@@ -102,15 +104,20 @@ public class DiceManager : MonoBehaviour
         else DiceAmount = aux;
     }
 
-    public void TossDices(int[] diceAmounts, Vector3 position, float force, bool enemy)
+    public void TossDices(Vector3 PlayerPosition, float PlayerForce, Vector3 EnemyPosition, float EnemyForce)
     {
-        List<Dice>[] dices = (!enemy) ? Dices : EnemyDices;
+        DiceInMovement = DiceAmount + EnemyDiceAmount;
 
-        DiceInMovement = DiceAmount;
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
-            for (int j = 0; j < diceAmounts[i]; ++j)
-                dices[i][j].TossDice(position, force);
+            for (int j = 0; j < Dices[i].Count; ++j)
+                Dices[i][j].TossDice(PlayerPosition, PlayerForce);
+        }
+
+        for (int i = 0; i < (int)DICES.COUNT; ++i)
+        {
+            for (int j = 0; j < EnemyDices[i].Count; ++j)
+                EnemyDices[i][j].TossDice(EnemyPosition, EnemyForce);
         }
     }
 
@@ -127,25 +134,45 @@ public class DiceManager : MonoBehaviour
         if (entering)
         {
             dice.UnitType = unitType;
-            DiceInMovement -= 1;
+            DiceInSelection -= 1;
         }
         else
         {
-            DiceInMovement += 1;
+            DiceInSelection += 1;
         }
     }
 
-    public void PlaceDicesInInventory()
+    public void EnemyDiceSelection()
     {
-        DiceInMovement = DiceAmount;
+        for (int i = 0; i < EnemyDices.Length; ++i)
+        {
+            for (int j = 0; j < EnemyDices[i].Count; ++j)
+            {
+                int random = Random.Range(0, (int)UnitCore.UNIT_TYPE.COUNT);
+                EnemyDices[i][j].UnitType = (UnitCore.UNIT_TYPE)random;
+                EnemyDices[i][j].transform.position = EnemyInventory.GetChild(random).position + new Vector3(Random.Range(0.0f, 4.0f), 0.5f, Random.Range(0.0f, 8.0f));
+            }
+        }
+    }
 
-        Vector3 initialPos = Inventory.position + Inventory.right * (((DiceAmount - 1) *  DistanceBetweenDices) / -2.0f);
+    public void PlaceDicesInInventory(bool inSelection = false)
+    {
+        if (inSelection)
+            DiceInSelection = DiceAmount;
+
+        PlaceDicesInventory(Inventory, Dices, DiceAmount);
+        PlaceDicesInventory(EnemyInventory, EnemyDices, EnemyDiceAmount);
+    }
+
+    void PlaceDicesInventory(Transform inventory, List<Dice>[] dices, int diceAmount)
+    {
+        Vector3 initialPos = inventory.position + inventory.right * (((diceAmount - 1) * DistanceBetweenDices) / -2.0f);
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
-            for (int j = 0; j < Dices[i].Count; ++j)
+            for (int j = 0; j < dices[i].Count; ++j)
             {
-                Dices[i][j].transform.position = initialPos;
-                initialPos += Inventory.right * DistanceBetweenDices;
+                dices[i][j].transform.position = initialPos;
+                initialPos += inventory.right * DistanceBetweenDices;
             }
         }
     }
@@ -176,11 +203,23 @@ public class DiceManager : MonoBehaviour
     {
         return DiceInMovement;
     }
-    public List<Dice> GetDices()
+    public int GetDicesInSelection()
+    {
+        return DiceInSelection;
+    }
+    public List<Dice> GetDices(bool enemy = false)
     {
         List<Dice> dices = new List<Dice>();
-        for (int i = 0; i < Dices.Length; ++i)
-            dices.AddRange(Dices[i]);
+        if (enemy)
+        {
+            for(int i = 0; i < EnemyDices.Length; ++i)
+                dices.AddRange(EnemyDices[i]);
+        }
+        else
+        {
+            for (int i = 0; i < Dices.Length; ++i)
+                dices.AddRange(Dices[i]);
+        }
         return dices;
     }
     public int GetDiceAmount()

@@ -12,9 +12,10 @@ public class UnitCore : MonoBehaviour
     }
     public enum UNIT_TYPE
     {
-        KNIGHT,
-        ARCHER,
-        WIZARD
+        KNIGHT = 0,
+        ARCHER = 1,
+        WIZARD = 2,
+        COUNT = 3
     }
 
     public int _HP;

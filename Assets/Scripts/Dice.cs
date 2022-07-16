@@ -12,6 +12,8 @@ public enum DICES
 
 public class Dice : MonoBehaviour
 {
+    const float speedThreshHold = 0.000001f;
+
     public DICES Type;
     public UnitCore.UNIT_TYPE UnitType;
     public int DiceValue = -1;
@@ -29,11 +31,11 @@ public class Dice : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Tossed)
+        if (Tossed && Rigidbody.velocity.x <= speedThreshHold && Rigidbody.velocity.x <= speedThreshHold && Rigidbody.velocity.x <= speedThreshHold)
         {
             ElapsedTime += Time.deltaTime;
 
-            if (ElapsedTime >= 5.0f && Rigidbody.velocity == Vector3.zero)
+            if (ElapsedTime >= 4.0f)
             {
                 ElapsedTime = 0.0f;
                 Rigidbody.AddForce(Random.Range(0, 250), Random.Range(0, 250), Random.Range(0, 250));

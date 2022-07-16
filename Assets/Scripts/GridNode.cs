@@ -46,7 +46,7 @@ public class GridNode : MonoBehaviour
         transform.position = OriginalPosition;
     }
 
-    public void InstantiateUnits(GameObject prefab, int amount)
+    public void InstantiateUnits(GameObject prefab, int amount, UnitCore.Team team)
     {
         Used = true;
         int aux = Mathf.Min(amount, NumberPositions);
@@ -54,6 +54,7 @@ public class GridNode : MonoBehaviour
         {
             InstantiatedUnits.Add(Instantiate(prefab, transform.GetChild(i)));
             InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position += new Vector3(0.0f, 2.5f, 0.0f);
+            InstantiatedUnits[InstantiatedUnits.Count - 1].GetComponent<UnitCore>().team = team;
         }
     }
 }

@@ -111,22 +111,22 @@ public class GameManager : MonoBehaviour
         DiceManager.CreateDices(true, DiceAmounts);
 
         // Show inventory dices
-        DiceManager.PlaceDicesInInventory();
+        DiceManager.PlaceDicesInInventory(true);
         DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
 
-        // Wait all dice to be placed
+        // Wait all dice to be selected
         Waiting = true;
         bool readyButton = false;
         while (Waiting)
         {
-            if (!readyButton && DiceManager.GetDicesInMovement() <= 0)
+            if (!readyButton && DiceManager.GetDicesInSelection() <= 0)
             {
                 readyButton = true;
                 UIManager.ActiveReadyButton(true);
             }
-            else if (readyButton && DiceManager.GetDicesInMovement() > 0)
+            else if (readyButton && DiceManager.GetDicesInSelection() > 0)
             {
                 readyButton = false;
                 UIManager.ActiveReadyButton(false);
@@ -135,6 +135,9 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         UIManager.ActiveReadyButton(false);
+
+        // Enemy dice selection
+        DiceManager.EnemyDiceSelection();
 
         // Get back the board
         CameraManager.SetBoardCamera();
@@ -148,8 +151,7 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceManager.TossDices(DiceAmounts, new Vector3(84f, 10f, -18f), -800, false);
-        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, -18f), 1000, true);
+        DiceManager.TossDices(new Vector3(84f, 10f, -18f), -800, new Vector3(-60f, 10f, -18f), 1000);
 
         // Waiting the dices values
         Waiting = true;
@@ -173,10 +175,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Placement()
     {
-        List<Dice> playerDices = DiceManager.GetDices();
-        int i = 0;
+        List<Dice> playerDices = DiceManager.GetDices(); 
+        List<Dice> enemyDices = DiceManager.GetDices(true);
+        int playerIdx = 0;
+        int enemyIdx = 0;
 
-        while (i < playerDices.Count)
+        while (playerIdx < playerDices.Count)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -195,17 +199,17 @@ public class GameManager : MonoBehaviour
                         }
                         GridNode = gridNode;
 
-                        string msg = GridNode.Select(playerDices[i].DiceValue);
+                        string msg = GridNode.Select(playerDices[playerIdx].DiceValue);
                         if (msg != null) UIManager.ShowInfoText(true, msg);
                     }
                     if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
                     {
                         UIManager.ShowInfoText(false);
                         GridNode.Unselect();
-                        GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[i].UnitType], playerDices[i].DiceValue);
+                        GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[playerIdx].UnitType], playerDices[playerIdx].DiceValue, UnitCore.Team.Player);
                         GridNode = null;
 
-                        i += 1;
+                        playerIdx += 1;
                     }
                 }
                 else if (GridNode != null)
@@ -223,6 +227,11 @@ public class GameManager : MonoBehaviour
             }
 
             yield return null;
+        }
+
+        while (enemyIdx < enemyDices.Count)
+        {
+            EnemyPlaceUnit(ref enemyDices, ref enemyIdx);
         }
 
         // Waiting the space to continue with the next state
@@ -255,6 +264,22 @@ public class GameManager : MonoBehaviour
     public void ActionEnded()
     {
         Waiting = false;
+    }
+
+    void EnemyPlaceUnit(ref List<Dice> enemyDices, ref int enemyIdx)
+    {
+        if (enemyIdx >= enemyDices.Count) return;
+
+        int grid = Random.Range(0, EnemySide.childCount);
+        GridNode gridNode = EnemySide.GetChild(grid).GetComponent<GridNode>();
+        while (gridNode.Used)
+        {
+            grid = Random.Range(0, EnemySide.childCount);
+            gridNode = EnemySide.GetChild(grid).GetComponent<GridNode>();
+        }
+
+        gridNode.InstantiateUnits(UnitPrefabs[(int)enemyDices[enemyIdx].UnitType], enemyDices[enemyIdx].DiceValue, UnitCore.Team.Enemy);
+        enemyIdx += 1;
     }
 
     /*IEnumerator ManageGridNode()
