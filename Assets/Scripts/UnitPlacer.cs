@@ -8,6 +8,9 @@ public class UnitPlacer : MonoBehaviour
 
     public GameObject SelectionAreaGO;
 
+    public Transform PlayerSide;
+    public Transform EnemySide;
+
     Plane Plane;
     Transform GridNode;
 
@@ -56,34 +59,45 @@ public class UnitPlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000f, 1 << 8))
             {
-                if (GridNode != hit.transform)
+                if (hit.transform.parent == PlayerSide)
+                {
+                    if (GridNode != hit.transform)
+                    {
+                        if (GridNode != null)
+                        {
+                            GridNode.position = SelectedArea;
+                            GridNode = null;
+                        }
+                        else
+                        {
+                            //SelectionAreaGO.SetActive(true);
+                        }
+
+                        GridNode = hit.transform;
+
+                        SelectedArea = GridNode.position;
+
+                        GridNode.position += new Vector3(0.0f, 2.0f, 0.0f);
+
+                        //SelectionAreaGO.transform.position = GridNode.position + new Vector3(0.0f, 0.55f, 0.0f);
+                    }
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Unit.transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
+                        //SelectionAreaGO.SetActive(false);
+
+                        GridNode.position = SelectedArea;
+                        GridNode = null;
+                        Placing = false;
+                    }
+                }
+                else
                 {
                     if (GridNode != null)
                     {
                         GridNode.position = SelectedArea;
                         GridNode = null;
                     }
-                    else
-                    {
-                        //SelectionAreaGO.SetActive(true);
-                    }
-
-                    GridNode = hit.transform;
-
-                    SelectedArea = GridNode.position;
-
-                    GridNode.position += new Vector3(0.0f, 2.0f, 0.0f);
-
-                    //SelectionAreaGO.transform.position = GridNode.position + new Vector3(0.0f, 0.55f, 0.0f);
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Unit.transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
-                    //SelectionAreaGO.SetActive(false);
-
-                    GridNode.position = SelectedArea;
-                    GridNode = null;
-                    Placing = false;
                 }
             }
             else if (GridNode != null)

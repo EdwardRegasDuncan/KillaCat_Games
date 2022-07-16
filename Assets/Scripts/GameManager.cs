@@ -22,12 +22,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Managers")]
     public UIManager UIManager;
+    public CameraManager CameraManager;
+
+    [Header("Controllers")]
     public DiceTosser DiceTosser;
     public UnitPlacer UnitPlacer;
 
+    [Header("Misc")]
     public int[] DiceAmounts;
-
 
     int Score = 0;
     bool Waiting = false;
@@ -41,6 +45,8 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+
+        CurrentScreen = SCREENS.MENUS;
     }
 
     void Update()
@@ -89,6 +95,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RollStage()
     {
+        // Show inventory dices
+        CameraManager.SetPlayerInventoryCamera();
+        yield return new WaitForSeconds(1.0f);
+        while (!Input.GetKeyDown(KeyCode.Escape))
+            yield return null;
+        CameraManager.SetBoardCamera();
+        yield return new WaitForSeconds(1.0f);
+
         // Waiting the first space to toss the dices
         UIManager.ShowPressKeyText(true, "Space", "toss the dices");
         while (!Input.GetKeyDown(KeyCode.Space))
@@ -109,7 +123,6 @@ public class GameManager : MonoBehaviour
         while (!Input.GetKeyDown(KeyCode.Space))
             yield return null;
         UIManager.ShowPressKeyText(false);
-
 
         ChangeState();
     }
