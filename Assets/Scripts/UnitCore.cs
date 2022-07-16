@@ -21,6 +21,7 @@ public class UnitCore : MonoBehaviour
     public bool _isAlive = true;
     Transform _target;
     public Team team = Team.Player;
+    public Material[] teamMaterials;
     public NavMeshAgent agent;
     bool pause;
 
@@ -105,6 +106,7 @@ public class UnitCore : MonoBehaviour
         gameObject.tag = team.ToString();
         agent.speed = _Speed;
         agent.stoppingDistance = _Range;
+        GetComponentInChildren<Renderer>().material = teamMaterials[(int)team];
     }
 
     private void Update()
@@ -128,13 +130,23 @@ public class UnitCore : MonoBehaviour
                 pause = true;
             }
         }
+
+        // rotate to face target
+        Vector3 direction = _target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = lookRotation;
+
+
         // check if in range of _target
         if (Vector3.Distance(transform.position, _target.position) > _Range)
         {
+            agent.isStopped = false;
             agent.SetDestination(_target.position);
         }
         else if (!_attackCooldown)
         {
+            agent.isStopped = true;
+            // attack
             _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
             StartCoroutine(AttackCooldown());
         }
