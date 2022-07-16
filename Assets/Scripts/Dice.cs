@@ -18,7 +18,6 @@ public class Dice : MonoBehaviour
     public UnitCore.UNIT_TYPE UnitType;
     public int DiceValue = -1;
     public GameObject Triggers;
-    public Renderer Renderer;
 
     Rigidbody Rigidbody;
 
@@ -48,7 +47,6 @@ public class Dice : MonoBehaviour
 
         Enemy = enemy;
 
-        Renderer.material.SetColor("_Color", Color.red);
         ActivateDice(false);
         Tossed = false;
     }
@@ -60,7 +58,6 @@ public class Dice : MonoBehaviour
         Rigidbody.AddForce(force, Random.Range(0, 250), Random.Range(0, 250));
         Rigidbody.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
 
-        Renderer.material.SetColor("_Color", Color.red);
         ActivateDice(true);
         Tossed = true;
         ElapsedTime = 0.0f;
@@ -77,7 +74,6 @@ public class Dice : MonoBehaviour
 
         Debug.Log("Dice face:" + triggerName);
 
-        Renderer.material.SetColor("_Color", Color.green);
         ActivateDice(false);
         Tossed = false;
 
