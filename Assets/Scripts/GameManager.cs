@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
         CurrentScreen = SCREENS.MENUS;
+
+        SoundManager.Initilize();
     }
 
     void Update()

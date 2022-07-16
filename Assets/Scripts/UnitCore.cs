@@ -74,6 +74,7 @@ public class UnitCore : MonoBehaviour
 
     public bool FindTarget()
     {
+
         Team targetTag = team == Team.Player ? Team.Enemy : Team.Player;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(targetTag.ToString());
         if (enemies.Length == 0)
@@ -83,6 +84,9 @@ public class UnitCore : MonoBehaviour
         // get closest gameobject with tag
         GameObject closest = null;
         float distance = Mathf.Infinity;
+
+        SoundManager.PlaySound(SoundManager.Sound.TropMove, transform.localPosition);
+
         foreach (GameObject enemy in enemies)
         {
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
@@ -111,10 +115,12 @@ public class UnitCore : MonoBehaviour
         _HP -= (int)finalDamage;
 
         healthBar.SetHealth(_HP);
+        SoundManager.PlaySound(SoundManager.Sound.TropReciveHit);
 
         if (_HP <= 0)
         {
             _isAlive = false;
+            SoundManager.PlaySound(SoundManager.Sound.TropDead);
         }
     }
 
@@ -174,15 +180,10 @@ public class UnitCore : MonoBehaviour
         {
             agent.isStopped = true;
             // attack
+            SoundManager.PlaySound(SoundManager.Sound.TropAttack, transform.localPosition); // Distinc between archer and melee
             _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
             StartCoroutine(AttackCooldown());
             attack_event?.Invoke(this, EventArgs.Empty);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20f, 5f);
-        }
-
     }
 }
