@@ -101,11 +101,13 @@ public class GameManager : MonoBehaviour
         DiceManager.CreateDices(true, DiceAmounts);
 
         // Show inventory dices
+        DiceManager.PlaceDicesInInventory();
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
         while (!Input.GetKeyDown(KeyCode.Escape))
             yield return null;
         CameraManager.SetBoardCamera();
+        DiceManager.DisableDiceDragging();
         yield return new WaitForSeconds(1.0f);
 
         // Waiting the first space to toss the dices

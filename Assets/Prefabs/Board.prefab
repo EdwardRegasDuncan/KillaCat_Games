@@ -1502,6 +1502,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5061854716016752054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4273092521644765401}
+  m_Layer: 0
+  m_Name: DiceInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4273092521644765401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061854716016752054}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -202.9, y: 0.5, z: -41.8}
+  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6546901868922098132}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5158319264741217495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,12 +1850,13 @@ Transform:
   m_GameObject: {fileID: 5877360501532461934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 74.7, y: 0, z: -44}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8295801381897213890}
   - {fileID: 2477475242120513904}
   - {fileID: 3564506397119130065}
+  - {fileID: 4273092521644765401}
   - {fileID: 7214834135304769454}
   - {fileID: 2849393752521998746}
   - {fileID: 692079270404783843}
@@ -1843,7 +1875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f05d93d792d38249a4400c49a16bed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitPrefabs: []
+  UnitPrefabs:
+  - {fileID: 9175248016683701169, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
+  - {fileID: 8063707489064908912, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
+  - {fileID: 4128805337750170723, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
   PlayerSide: {fileID: 8295801381897213890}
   EnemySide: {fileID: 2477475242120513904}
   Placing: 0
@@ -3171,11 +3206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -221
+      value: -186.1
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3241,11 +3276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -237
+      value: -202.1
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3307,11 +3342,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 38e32d88b8a3aed4086d0f4b50dde740, type: 2}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -251.9
+      value: -217
       objectReference: {fileID: 0}
     - target: {fileID: 1654120354994151133, guid: 19d26c7af508793478e3eb2d26e4fbd2, type: 3}
       propertyPath: m_LocalPosition.y

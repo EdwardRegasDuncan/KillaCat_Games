@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DiceManager : MonoBehaviour
 {
+    const float DistanceBetweenDices = 2.0f;
+
+
     [Header("Each element is a dice type (D4/D6/D10)")]
     public GameObject[] DicePrefabs;
 
@@ -94,6 +97,7 @@ public class DiceManager : MonoBehaviour
                 for (int j = 0; j < difference; ++j)
                 {
                     dices[i].Add(Instantiate(DicePrefabs[i]).GetComponent<Dice>());
+                    dices[i][dices[i].Count - 1].Setup(enemy);
                 }
             }
         }
@@ -114,7 +118,7 @@ public class DiceManager : MonoBehaviour
             for (int j = 0; j < diceAmounts[i]; ++j)
             {
                 DiceInMovement += 1;
-                dices[i][j].TossDice(enemy, position, force);
+                dices[i][j].TossDice(position, force);
             }
         }
     }
@@ -136,7 +140,15 @@ public class DiceManager : MonoBehaviour
     {
         EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
 
-        // PLACE DICES IN INVENTORY
+        Vector3 initialPos = Inventory.position + Inventory.right * (((DiceAmount - 1) *  DistanceBetweenDices) / -2.0f);
+        for (int i = 0; i < (int)DICES.COUNT; ++i)
+        {
+            for (int j = 0; j < Dices[i].Count; ++j)
+            {
+                Dices[i][j].transform.position = initialPos;
+                initialPos += Inventory.right * DistanceBetweenDices;
+            }
+        }
     }
 
     public void PlaceDicesInFrontOfCamera()

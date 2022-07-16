@@ -25,7 +25,7 @@ public class Dice : MonoBehaviour
 
     bool Tossed = false;
 
-    void Setup(bool enemy)
+    public void Setup(bool enemy)
     {
         Rigidbody = GetComponent<Rigidbody>();
 
@@ -36,11 +36,8 @@ public class Dice : MonoBehaviour
         Tossed = false;
     }
 
-    public void TossDice(bool enemy, Vector3 position, float force)
+    public void TossDice(Vector3 position, float force)
     {
-        if (!DiceSetup)
-            Setup(enemy);
-
         transform.position = position;
         transform.rotation = new Quaternion(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
         Rigidbody.AddForce(force, Random.Range(0, 250), Random.Range(0, 250));
