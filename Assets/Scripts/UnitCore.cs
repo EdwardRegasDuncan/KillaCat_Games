@@ -32,8 +32,6 @@ public class UnitCore : MonoBehaviour
     public NavMeshAgent agent;
     bool pause;
 
-    public TMP_Text HPText;
-
     public UnitCore()
     {
         team = Team.Enemy;
@@ -44,6 +42,8 @@ public class UnitCore : MonoBehaviour
         _Range = 0.0f;
         _Armour = 0.0f;
         _ArmourPiercing = 0.0f;
+
+        pause = true;
     }
     public UnitCore(
         Team assignedTeam,
@@ -124,8 +124,6 @@ public class UnitCore : MonoBehaviour
         {
             return;
         }
-
-        HPText.text = _HP.ToString();
 
         if (!_isAlive)
         {

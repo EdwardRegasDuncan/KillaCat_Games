@@ -13,6 +13,7 @@ public enum DICES
 public class Dice : MonoBehaviour
 {
     public DICES Type;
+    public UnitCore.UNIT_TYPE UnitType;
     public int DiceValue = -1;
     public GameObject Triggers;
     public Renderer Renderer;

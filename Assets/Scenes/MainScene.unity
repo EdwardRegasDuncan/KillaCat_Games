@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &92901802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2477475242120513904, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
+  m_PrefabInstance: {fileID: 6724434913763171727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &345584192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,8 +255,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5009652, y: 1, z: 0.6203772}
-  m_Center: {x: 0.12521392, y: 0, z: -0.19625789}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &409160486
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +316,7 @@ Transform:
   m_GameObject: {fileID: 409160483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.9, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 200, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -379,7 +384,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0768504, y: 1}
+    m_SensorSize: {x: 2.0701754, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -391,6 +396,11 @@ MonoBehaviour:
 --- !u!4 &656627482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4273092521644765401, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
+  m_PrefabInstance: {fileID: 6724434913763171727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &739349192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8295801381897213890, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
   m_PrefabInstance: {fileID: 6724434913763171727}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &751461000 stripped
@@ -576,8 +586,16 @@ MonoBehaviour:
   CameraManager: {fileID: 864159440}
   DiceManager: {fileID: 1331578676}
   DiceTosser: {fileID: 409160484}
-  UnitPlacer: {fileID: 919132148027856611}
-  DiceAmounts: 000000000500000000000000
+  UnitPrefabs:
+  - {fileID: 9175248016683701169, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
+  - {fileID: 8063707489064908912, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
+  - {fileID: 4128805337750170723, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
+  DiceAmounts: 010000000100000001000000
+  PlayerSide: {fileID: 739349192}
+  EnemySide: {fileID: 92901802}
+  ResetGrid:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1331578675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,7 +1197,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0768504, y: 1}
+    m_SensorSize: {x: 2.0701754, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1312,17 +1330,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1390872325051731928, guid: 12f78db4c297088478a1535769afaabc, type: 3}
   m_PrefabInstance: {fileID: 1390872325663782893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &919132148027856611 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6724434914781705788, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
-  m_PrefabInstance: {fileID: 6724434913763171727}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f05d93d792d38249a4400c49a16bed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1332645419201280221
 PrefabInstance:
   m_ObjectHideFlags: 0
