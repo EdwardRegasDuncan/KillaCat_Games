@@ -98,7 +98,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b65ac606f6a2dd64caab406f346d42e1, type: 2}
   - {fileID: 2100000, guid: 8873bce7b8cdc1c4f9c392011d66fc28, type: 2}
   agent: {fileID: 0}
-  healthBar: {fileID: 0}
+  pause: 1
+  maxHealth: 100
+  healthBar: {fileID: 4508939626634243070}
 --- !u!1001 &3665727407741591921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,6 +288,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 648bc744a565c3643865b45424fa05bf, type: 3}
+--- !u!114 &4508939626634243070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5562360662501257004, guid: 648bc744a565c3643865b45424fa05bf, type: 3}
+  m_PrefabInstance: {fileID: 8332645839923643602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b777ae3daffca741b527e16367fc985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5685229150734181121 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4415353873237927891, guid: 648bc744a565c3643865b45424fa05bf, type: 3}

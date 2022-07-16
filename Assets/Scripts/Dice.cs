@@ -24,7 +24,23 @@ public class Dice : MonoBehaviour
 
     bool Enemy;
 
+    float ElapsedTime = 0.0f;
     bool Tossed = false;
+
+    void FixedUpdate()
+    {
+        if (Tossed)
+        {
+            ElapsedTime += Time.deltaTime;
+
+            if (ElapsedTime >= 5.0f && Rigidbody.velocity == Vector3.zero)
+            {
+                ElapsedTime = 0.0f;
+                Rigidbody.AddForce(Random.Range(0, 250), Random.Range(0, 250), Random.Range(0, 250));
+                Rigidbody.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+            }
+        }
+    }
 
     public void Setup(bool enemy)
     {
@@ -47,6 +63,7 @@ public class Dice : MonoBehaviour
         Renderer.material.SetColor("_Color", Color.red);
         ActivateDice(true);
         Tossed = true;
+        ElapsedTime = 0.0f;
     }
 
     public int TriggerDetection(string triggerName)

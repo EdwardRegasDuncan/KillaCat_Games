@@ -120,16 +120,23 @@ public class GameManager : MonoBehaviour
 
         // Wait all dice to be placed
         Waiting = true;
-        bool showReadyButton = false;
+        bool readyButton = false;
         while (Waiting)
         {
-            if (!showReadyButton && DiceManager.GetDicesInMovement() <= 0)
+            if (!readyButton && DiceManager.GetDicesInMovement() <= 0)
+            {
+                readyButton = true;
                 UIManager.ActiveReadyButton(true);
-            else if (showReadyButton && DiceManager.GetDicesInMovement() > 0)
+            }
+            else if (readyButton && DiceManager.GetDicesInMovement() > 0)
+            {
+                readyButton = false;
                 UIManager.ActiveReadyButton(false);
+            }
 
             yield return null;
         }
+        UIManager.ActiveReadyButton(false);
 
         // Get back the board
         CameraManager.SetBoardCamera();
@@ -143,8 +150,8 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceManager.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
-        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
+        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, -18f), -800, false);
+        DiceManager.TossDices(DiceAmounts, new Vector3(84f, 10f, -18f), 1000, true);
 
         // Waiting the dices values
         Waiting = true;
