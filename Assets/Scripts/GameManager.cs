@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         EnterState();
     }
 
-    public void DiceValues(List<int>[] diceValues)
+    public void DiceValues(List<int>[] diceValues, List<int>[] enemyDiceValues)
     {
 
     }

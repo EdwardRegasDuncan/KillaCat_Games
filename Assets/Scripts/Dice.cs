@@ -21,9 +21,12 @@ public class Dice : MonoBehaviour
     Renderer Renderer;
     Transform[] Triggers;
 
+    DiceTosser DiceTosser;
+    bool Enemy;
+
     bool Tossed = false;
 
-    void Setup()
+    void Setup(DiceTosser diceTosser, bool enemy)
     {
         Rigidbody = GetComponent<Rigidbody>();
         Renderer = GetComponent<Renderer>();
@@ -31,15 +34,18 @@ public class Dice : MonoBehaviour
         for (int i = 0; i < transform.childCount; ++i)
             Triggers[i] = transform.GetChild(i);
 
+        DiceTosser = diceTosser;
+        Enemy = enemy;
+
         Renderer.material.SetColor("_Color", Color.red);
         ActivateDice(false);
         Tossed = false;
     }
 
-    public void TossDice()
+    public void TossDice(DiceTosser diceTosser, bool enemy)
     {
         if (!DiceSetup)
-            Setup();
+            Setup(diceTosser, enemy);
 
         transform.position = new Vector3(85f, 10f, 6f);
         transform.rotation = new Quaternion(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
@@ -69,10 +75,17 @@ public class Dice : MonoBehaviour
         return DiceValue;
     }
 
+    #region GETTERS
     public bool Selectable()
     {
         return !Tossed;
     }
+
+    public bool IsFromTheEnemy()
+    {
+        return Enemy;
+    }
+    #endregion
 
     void ActivateDice(bool active)
     {

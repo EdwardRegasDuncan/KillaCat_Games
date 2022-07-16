@@ -8,8 +8,13 @@ public class DiceTosser : MonoBehaviour
     public GameObject[] DicePrefabs;
     public int[] DiceAmounts;
 
+    // Player
     List<Dice>[] Dices = new List<Dice>[(int)DICES.COUNT];
     List<int>[] DiceValues = new List<int>[(int)DICES.COUNT];
+
+    // Enemy
+    List<Dice>[] EnemyDices = new List<Dice>[(int)DICES.COUNT];
+    List<int>[] EnemyDiceValues = new List<int>[(int)DICES.COUNT];
 
     Plane Plane;
 
@@ -31,7 +36,7 @@ public class DiceTosser : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !Dragging)
+        if (Input.GetMouseButtonDown(0) && !Dragging && DiceInMovement <= 0)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -66,17 +71,20 @@ public class DiceTosser : MonoBehaviour
 
     public void TossDices(int[] diceAmounts)
     {
+        List<Dice>[] dices = (false) ? Dices : EnemyDices;
+        List<int>[] diceValues = (false) ? DiceValues : EnemyDiceValues;
+
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
-            DiceValues[i].Clear();
+            diceValues[i].Clear();
 
-            int difference = Dices[i].Count - diceAmounts[i];
+            int difference = dices[i].Count - diceAmounts[i];
             if (difference > 0)
             {
                 for (int j = 0; j < difference; ++j)
                 {
-                    Destroy(Dices[i][Dices[i].Count - 1]);
-                    Dices[i].RemoveAt(Dices[i].Count - 1);
+                    Destroy(dices[i][dices[i].Count - 1]);
+                    dices[i].RemoveAt(dices[i].Count - 1);
                 }
             }
             else if (difference < 0)
@@ -84,14 +92,14 @@ public class DiceTosser : MonoBehaviour
                 difference *= -1;
                 for (int j = 0; j < difference; ++j)
                 {
-                    Dices[i].Add(Instantiate(DicePrefabs[i]).GetComponent<Dice>());
+                    dices[i].Add(Instantiate(DicePrefabs[i]).GetComponent<Dice>());
                 }
             }
 
-            for (int j = 0; j < Dices[i].Count; ++j)
+            for (int j = 0; j < dices[i].Count; ++j)
             {
                 DiceInMovement += 1;
-                Dices[i][j].TossDice();
+                dices[i][j].TossDice(this, false);
             }
         }
     }
@@ -103,11 +111,14 @@ public class DiceTosser : MonoBehaviour
         int aux = dice.TriggerDetection(other.gameObject.name);
         if (aux != -1)
         {
-            DiceValues[(int)dice.Type].Add(aux);
+            if (dice.IsFromTheEnemy())
+                EnemyDiceValues[(int)dice.Type].Add(aux);
+            else
+                DiceValues[(int)dice.Type].Add(aux);
             DiceInMovement -= 1;
 
             if (DiceInMovement <= 0)
-                GameManager.Instance.DiceValues(DiceValues);
+                GameManager.Instance.DiceValues(DiceValues, EnemyDiceValues);
         }
     }
 }
