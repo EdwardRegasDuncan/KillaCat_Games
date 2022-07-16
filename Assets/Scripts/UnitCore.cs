@@ -19,6 +19,8 @@ public class UnitCore : MonoBehaviour
         COUNT = 3
     }
 
+    AnimatorController.UNIT_STATE current_state = AnimatorController.UNIT_STATE.ANY;
+
     public int _HP;
     public float _Speed;
     public float _AttackDamage;
@@ -40,6 +42,11 @@ public class UnitCore : MonoBehaviour
     public event EventHandler attack_event;
 
     public HealthBar healthBar;
+
+    public AnimatorController.UNIT_STATE GetState()
+    {
+        return current_state;
+    }
 
     public UnitCore()
     {

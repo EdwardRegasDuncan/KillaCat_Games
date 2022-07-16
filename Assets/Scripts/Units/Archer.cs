@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AnimatorController;
 
 public class Archer : UnitCore
 {
@@ -9,6 +10,7 @@ public class Archer : UnitCore
     float _chargeRate;
 
     public GameObject _arrowPrefab;
+    
 
     private void Awake()
     {
@@ -30,5 +32,7 @@ public class Archer : UnitCore
         GameObject arrow = Instantiate(_arrowPrefab, transform.position, transform.rotation);
         arrow.GetComponent<ArrowController>()._target = _target;
     }
-    
+
+   
+
 }
