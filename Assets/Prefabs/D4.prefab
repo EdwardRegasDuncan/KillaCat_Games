@@ -319,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 1119398055732456045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5686089201780199277}
@@ -370,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  UnitType: 0
   DiceValue: -1
   Triggers: {fileID: 6986843322919008842}
   Renderer: {fileID: 7080127625134053694}
