@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class UnitCore : MonoBehaviour
 {
@@ -19,11 +20,13 @@ public class UnitCore : MonoBehaviour
     public float _Armour; // percentage of damage blocked
     public float _ArmourPiercing; // amount of armour to ignore
     public bool _isAlive = true;
-    Transform _target;
+    public Transform _target;
     public Team team = Team.Player;
     public Material[] teamMaterials;
     public NavMeshAgent agent;
     bool pause;
+
+    public TMP_Text HPText;
 
     public UnitCore()
     {
@@ -116,6 +119,8 @@ public class UnitCore : MonoBehaviour
             return;
         }
 
+        HPText.text = _HP.ToString();
+
         if (!_isAlive)
         {
             // record death
@@ -143,7 +148,13 @@ public class UnitCore : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(_target.position);
         }
-        else if (!_attackCooldown)
+        // if too close move away
+        if (Vector3.Distance(transform.position, _target.position) < _Range)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(transform.position + (transform.position - _target.position).normalized * _Range);
+        }
+        if (!_attackCooldown && Vector3.Distance(transform.position, _target.position) <= _Range)
         {
             agent.isStopped = true;
             // attack

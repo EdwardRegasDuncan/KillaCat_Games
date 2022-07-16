@@ -10,11 +10,11 @@ public class Knight : UnitCore
     private void Awake()
     {
         _HP = 100;
-        _Speed = 10f;
-        _AttackDamage = 10f;
-        _AttackSpeed = 1.5f;
+        _Speed = 7f;
+        _AttackDamage = 20f;
+        _AttackSpeed = 1.0f;
         _Range = 2f;
-        _Armour = 20f;
+        _Armour = 30f;
         _ArmourPiercing = 10f;
     }
 

@@ -11,10 +11,11 @@ public class Wizard : UnitCore
     {
         _HP = 50;
         _Speed = 3f;
-        _AttackDamage = 30f;
-        _AttackSpeed = 2.5f;
+        _AttackDamage = 50f;
+        _AttackSpeed = 2.0f;
         _Range = 5f;
         _Armour = 0f;
-        _ArmourPiercing = 20f;
+        _ArmourPiercing = 50f;
     }
+    
 }

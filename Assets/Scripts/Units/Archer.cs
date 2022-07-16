@@ -11,10 +11,10 @@ public class Archer : UnitCore
     {
         _HP = 75;
         _Speed = 5f;
-        _AttackDamage = 20f;
-        _AttackSpeed = 1f;
-        _Range = 7f;
-        _Armour = 10f;
+        _AttackDamage = 5f;
+        _AttackSpeed = 0.5f;
+        _Range = 15f;
+        _Armour = 5f;
         _ArmourPiercing = 0f;
     }
 }
