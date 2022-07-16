@@ -152,6 +152,7 @@ public class UnitCore : MonoBehaviour
             // record death
             
             Destroy(gameObject);
+            return;
         }
 
         if (_target == null)

@@ -46,7 +46,7 @@ public class GridNode : MonoBehaviour
         transform.position = OriginalPosition;
     }
 
-    public void InstantiateUnits(GameObject prefab, int amount, UnitCore.Team team, GameObject container)
+    public void InstantiateUnits(GameObject prefab, int amount, UnitCore.Team team, Transform container)
     {
         Used = true;
         int aux = Mathf.Min(amount, NumberPositions);
@@ -56,7 +56,7 @@ public class GridNode : MonoBehaviour
                 prefab, 
                 transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f), 
                 Quaternion.Euler(0.0f, (team == UnitCore.Team.Player) ? -90.0f : 90.0f, 0.0f), 
-                container.transform
+                container
             );
             gameObject.transform.position = transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f);
             gameObject.GetComponent<UnitCore>().team = team;

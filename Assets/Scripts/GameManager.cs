@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
     public Transform PlayerSide;
     public Transform EnemySide;
     public UnityEvent ResetGrid;
-    public GameObject PlayerUnitContainer;
-    public GameObject EnemyUnitContainer;
+    public Transform PlayerUnitContainer;
+    public Transform EnemyUnitContainer;
 
     GridNode GridNode;
 
@@ -262,6 +262,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Combat()
     {
+        for (int i = 0; i < PlayerUnitContainer.childCount; ++i)
+            PlayerUnitContainer.GetChild(i).GetComponent<UnitCore>().pause = false;
+
+        for (int i = 0; i < EnemyUnitContainer.childCount; ++i)
+            EnemyUnitContainer.GetChild(i).GetComponent<UnitCore>().pause = false;
+
         // TODO: make the units fight
 
         yield return null;

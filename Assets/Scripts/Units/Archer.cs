@@ -27,7 +27,7 @@ public class Archer : UnitCore
     
     private void ArrowParticle(object sender, EventArgs e)
     {
-        GameObject arrow = Instantiate(_arrowPrefab, transform.position, Quaternion.identity);
+        GameObject arrow = Instantiate(_arrowPrefab, transform.position, transform.rotation);
         arrow.GetComponent<ArrowController>()._target = _target;
     }
     
