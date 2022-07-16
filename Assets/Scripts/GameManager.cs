@@ -39,11 +39,14 @@ public class GameManager : MonoBehaviour
     public Transform PlayerSide;
     public Transform EnemySide;
     public UnityEvent ResetGrid;
+    public GameObject PlayerUnitContainer;
+    public GameObject EnemyUnitContainer;
 
     GridNode GridNode;
 
     int Score = 0;
     bool Waiting = false;
+
 
     SCREENS CurrentScreen;
     GAME_STATES GameState;
@@ -206,7 +209,7 @@ public class GameManager : MonoBehaviour
                     {
                         UIManager.ShowInfoText(false);
                         GridNode.Unselect();
-                        GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[playerIdx].UnitType], playerDices[playerIdx].DiceValue, UnitCore.Team.Player);
+                        GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[playerIdx].UnitType], playerDices[playerIdx].DiceValue, UnitCore.Team.Player, PlayerUnitContainer);
                         GridNode = null;
 
                         playerIdx += 1;
@@ -278,7 +281,7 @@ public class GameManager : MonoBehaviour
             gridNode = EnemySide.GetChild(grid).GetComponent<GridNode>();
         }
 
-        gridNode.InstantiateUnits(UnitPrefabs[(int)enemyDices[enemyIdx].UnitType], enemyDices[enemyIdx].DiceValue, UnitCore.Team.Enemy);
+        gridNode.InstantiateUnits(UnitPrefabs[(int)enemyDices[enemyIdx].UnitType], enemyDices[enemyIdx].DiceValue, UnitCore.Team.Enemy, EnemyUnitContainer);
         enemyIdx += 1;
     }
 

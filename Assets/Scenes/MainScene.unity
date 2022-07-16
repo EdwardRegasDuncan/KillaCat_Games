@@ -435,6 +435,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &434048243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 434048244}
+  m_Layer: 0
+  m_Name: EnemyUnitContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &434048244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434048243}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1331578673}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548450154
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050397096}
   m_Layer: 0
-  m_Name: DiceSpawner
+  m_Name: DiceContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1103,6 +1134,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 896363059}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1160565290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160565291}
+  m_Layer: 0
+  m_Name: PlayerUnitContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160565291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160565290}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1331578673}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175050539
 GameObject:
@@ -1266,6 +1328,8 @@ Transform:
   m_Children:
   - {fileID: 864159439}
   - {fileID: 1050397096}
+  - {fileID: 1160565291}
+  - {fileID: 434048244}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1295,6 +1359,8 @@ MonoBehaviour:
   ResetGrid:
     m_PersistentCalls:
       m_Calls: []
+  PlayerUnitContainer: {fileID: 1160565290}
+  EnemyUnitContainer: {fileID: 434048243}
 --- !u!114 &1331578675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,7 +1397,7 @@ MonoBehaviour:
   - {fileID: 3170798661715953083, guid: 1b375322106bc8d448f96fa0b2bfd340, type: 3}
   Inventory: {fileID: 656627482}
   EnemyInventory: {fileID: 94522253}
-  DiceSpawner: {fileID: 1050397096}
+  DiceContainer: {fileID: 1050397096}
   cam: {fileID: 1692150756}
 --- !u!4 &1403675415 stripped
 Transform:

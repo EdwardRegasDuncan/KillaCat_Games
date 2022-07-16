@@ -12,7 +12,7 @@ public class DiceManager : MonoBehaviour
 
     public Transform Inventory;
     public Transform EnemyInventory;
-    public Transform DiceSpawner;
+    public Transform DiceContainer;
     public Camera cam;
 
     List<Dice>[] Dices = new List<Dice>[(int)DICES.COUNT];
@@ -94,7 +94,7 @@ public class DiceManager : MonoBehaviour
                 difference *= -1;
                 for (int j = 0; j < difference; ++j)
                 {
-                    dices[i].Add(Instantiate(DicePrefabs[i], DiceSpawner).GetComponent<Dice>());
+                    dices[i].Add(Instantiate(DicePrefabs[i], DiceContainer).GetComponent<Dice>());
                     dices[i][dices[i].Count - 1].Setup(enemy);
                 }
             }

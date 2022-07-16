@@ -12,7 +12,7 @@ public enum DICES
 
 public class Dice : MonoBehaviour
 {
-    const float speedThreshHold = 0.000001f;
+    const float speedThreshHold = 0.00000001f;
 
     public DICES Type;
     public UnitCore.UNIT_TYPE UnitType;
@@ -35,7 +35,7 @@ public class Dice : MonoBehaviour
         {
             ElapsedTime += Time.deltaTime;
 
-            if (ElapsedTime >= 4.0f)
+            if (ElapsedTime >= 5.0f)
             {
                 ElapsedTime = 0.0f;
                 Rigidbody.AddForce(Random.Range(0, 250), Random.Range(0, 250), Random.Range(0, 250));
