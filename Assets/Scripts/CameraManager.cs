@@ -5,13 +5,21 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
+    public CinemachineVirtualCamera MenuVCam; 
     public CinemachineVirtualCamera BoardVCam; 
     public CinemachineVirtualCamera PlayerInventoryVCam; 
 
     void ResetCameraPriorities()
     {
+        MenuVCam.Priority = 0;
         BoardVCam.Priority = 0;
         PlayerInventoryVCam.Priority = 0;
+    }
+
+    public void SetMenuCamera()
+    {
+        ResetCameraPriorities();
+        MenuVCam.Priority = 10;
     }
 
     public void SetBoardCamera()

@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         CurrentScreen = SCREENS.MENUS;
 
         SoundManager.Initilize();
+        SoundManager.PlayMusic(SoundManager.Sound.BackGroundMusic, 0.1f);
     }
 
     void Update()
@@ -82,8 +83,8 @@ public class GameManager : MonoBehaviour
             case SCREENS.MENUS:
                 break;
             case SCREENS.IN_GAME:
+                CameraManager.SetBoardCamera();
                 GameState = GAME_STATES.ROLL_STAGE;
-                SoundManager.PlaySound(SoundManager.Sound.BackGroundMusic);
                 EnterState();
                 break;
             case SCREENS.RESULT:
@@ -112,6 +113,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RollStage()
     {
+        yield return new WaitForSeconds(1.0f);
+
+        // Waiting first input to start
+        UIManager.ShowPressKeyText(true, "Space", "start");
+        while (!Input.GetKeyDown(KeyCode.Space))
+            yield return null;
+        UIManager.ShowPressKeyText(false);
+
         // Create dices
         DiceManager.CreateDices(false, DiceAmounts);
         DiceManager.CreateDices(true, DiceAmounts);
@@ -251,6 +260,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Combat()
     {
+        // TODO: make the units fight
+
         yield return null;
     }
 

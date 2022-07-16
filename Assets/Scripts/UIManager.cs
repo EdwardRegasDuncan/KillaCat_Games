@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public Button ReadyButton;
     public TextMeshProUGUI InfoText;
 
+    Stack<string> InfoTexts = new Stack<string>();
+
     public void UpdateScore(int newScore)
     {
         ScoreText.text = newScore.ToString();
@@ -33,7 +35,24 @@ public class UIManager : MonoBehaviour
 
     public void ShowInfoText(bool show, string text = null)
     {
-        if (show) InfoText.text = text;
+        if (show)
+        {
+            InfoTexts.Push(text);
+            InfoText.text = text;
+        }
+        else
+        {
+            if (InfoTexts.Count > 0)
+            {
+                InfoTexts.Pop();
+
+                if (InfoTexts.Count > 0)
+                {
+                    show = true;
+                    InfoText.text = InfoTexts.Peek();
+                }
+            }
+        }
         InfoText.transform.parent.gameObject.SetActive(show);
     }
 
@@ -58,11 +77,13 @@ public class UIManager : MonoBehaviour
     #region BUTTON_MANAGEMENT
     public void StartClicked()
     {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
         GameManager.Instance.ChangeScreen(SCREENS.IN_GAME);
     }
 
     public void QuitClicked()
     {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -72,6 +93,7 @@ public class UIManager : MonoBehaviour
 
     public void ReadyClicked()
     {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
         GameManager.Instance.ActionEnded();
     }
     #endregion

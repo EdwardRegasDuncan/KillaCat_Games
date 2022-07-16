@@ -19,7 +19,9 @@ public class SoundManager
 
     public static Dictionary<Sound, float> soundTimerDictionary;
     private static GameObject oneShotGameObject;
+    private static GameObject musicGameObject;
     private static AudioSource oneShotAudioSource;
+    private static AudioSource musicAudioSource;
 
     public static void Initilize()
     {
@@ -45,7 +47,7 @@ public class SoundManager
         }
     }
 
-    public static void PlaySound(Sound sound)
+    public static void PlaySound(Sound sound, float volume = 0.5f)
     {
         if (CanPlaySound(sound))
         {
@@ -54,7 +56,24 @@ public class SoundManager
                 oneShotGameObject = new GameObject("Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
             }
+            oneShotAudioSource.volume = volume;
             oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
+        }
+    }
+
+    public static void PlayMusic(Sound sound, float volume = 0.2f)
+    {
+        if (CanPlaySound(sound))
+        {
+            if (musicGameObject == null)
+            {
+                musicGameObject = new GameObject("Sound");
+                musicAudioSource = musicGameObject.AddComponent<AudioSource>();
+            }
+            musicAudioSource.volume = volume;
+            musicAudioSource.loop = true;
+            musicAudioSource.clip = GetAudioClip(sound);
+            musicAudioSource.Play();
         }
     }
 
