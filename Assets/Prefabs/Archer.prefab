@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5037157796703981654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.986, z: 0}
   m_LocalScale: {x: 0.001499, y: 0.001499, z: 0.001499}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8063707489064908912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.78, y: 6.111, z: 13.78}
+  m_LocalPosition: {x: -61.78, y: 0, z: 13.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -129,9 +129,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.8
-  m_Height: 2.23
+  m_Height: 2.5422747
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.000000059604645}
 --- !u!195 &8063707489064908906
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -174,8 +174,10 @@ MonoBehaviour:
   _Armour: 0
   _ArmourPiercing: 0
   _isAlive: 1
+  _target: {fileID: 0}
   team: 0
   teamMaterials:
   - {fileID: 2100000, guid: b65ac606f6a2dd64caab406f346d42e1, type: 2}
   - {fileID: 2100000, guid: 8873bce7b8cdc1c4f9c392011d66fc28, type: 2}
   agent: {fileID: 0}
+  HPText: {fileID: 0}

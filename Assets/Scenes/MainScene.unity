@@ -487,6 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -749,7 +750,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7840131444378459787, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
 --- !u!4 &1662581391 stripped
 Transform:
@@ -1253,7 +1255,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1400084069591064261, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
 --- !u!1 &2019026899
 GameObject:
