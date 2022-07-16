@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [Header("Managers")]
     public UIManager UIManager;
     public CameraManager CameraManager;
+    public DiceManager DiceManager;
 
     [Header("Controllers")]
     public DiceTosser DiceTosser;
@@ -95,6 +96,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RollStage()
     {
+        // Create dices
+        DiceManager.CreateDices(false, DiceAmounts);
+        DiceManager.CreateDices(true, DiceAmounts);
+
         // Show inventory dices
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
@@ -110,8 +115,8 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceTosser.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
-        DiceTosser.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
+        DiceManager.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
+        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
 
         // Waiting the dices values
         Waiting = true;
@@ -135,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void DiceValues(List<int>[] diceValues, List<int>[] enemyDiceValues)
     {
-        DiceTosser.ShowDicesToScreen();
+        DiceManager.PlaceDicesInFrontOfCamera();
         Waiting = false;
     }
 }

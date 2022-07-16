@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class UnitPlacer : MonoBehaviour
 {
-    public GameObject Unit;
-
-    public GameObject SelectionAreaGO;
+    [Header("Each element is a unit type (Knight/Archer/Wizard)")]
+    public GameObject[] UnitPrefabs;
 
     public Transform PlayerSide;
     public Transform EnemySide;
+
+    List<GameObject> InstantiatedUnits = new List<GameObject>();
 
     Plane Plane;
     Transform GridNode;
@@ -26,34 +27,11 @@ public class UnitPlacer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            //SelectionAreaGO.SetActive(true);
             Placing = true;
         }
 
         if (Placing)
         {
-#if NO_GRID
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float distance;
-            if (Plane.Raycast(ray, out distance))
-            {
-                SelectedArea = ray.origin + ray.direction * distance;
-
-                SelectedArea.x = Mathf.Round(SelectedArea.x);
-                SelectedArea.z = Mathf.Round(SelectedArea.z);
-
-                SelectionAreaGO.transform.position = SelectedArea;
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    SelectedArea.y = 0.5f;
-                    Unit.transform.position = SelectedArea;
-                    SelectionAreaGO.SetActive(false);
-
-                    Placing = false;
-                }
-            }
-#else
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -83,12 +61,13 @@ public class UnitPlacer : MonoBehaviour
                     }
                     if (Input.GetMouseButtonDown(0))
                     {
-                        Unit.transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
-                        //SelectionAreaGO.SetActive(false);
+                        InstantiatedUnits.Add(Instantiate(UnitPrefabs[0]));
+
+                        InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
 
                         GridNode.position = SelectedArea;
                         GridNode = null;
-                        Placing = false;
+                        //Placing = false;
                     }
                 }
                 else
@@ -104,9 +83,7 @@ public class UnitPlacer : MonoBehaviour
             {
                 GridNode.position = SelectedArea;
                 GridNode = null;
-                //SelectionAreaGO.SetActive(false);
             }
-#endif
         }
     }
 

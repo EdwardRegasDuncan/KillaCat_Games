@@ -10,6 +10,12 @@ public class UnitCore : MonoBehaviour
         Player,
         Enemy
     }
+    public enum UNIT_TYPE
+    {
+        KNIGHT,
+        ARCHER,
+        WIZARD
+    }
 
     public float _HP;
     public float _Speed;

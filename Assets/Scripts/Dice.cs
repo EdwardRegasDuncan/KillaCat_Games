@@ -14,27 +14,21 @@ public class Dice : MonoBehaviour
 {
     public DICES Type;
     public int DiceValue = -1;
+    public GameObject Triggers;
+    public Renderer Renderer;
 
     bool DiceSetup = false;
 
     Rigidbody Rigidbody;
-    Renderer Renderer;
-    Transform[] Triggers;
 
-    DiceTosser DiceTosser;
     bool Enemy;
 
     bool Tossed = false;
 
-    void Setup(DiceTosser diceTosser, bool enemy)
+    void Setup(bool enemy)
     {
         Rigidbody = GetComponent<Rigidbody>();
-        Renderer = GetComponent<Renderer>();
-        Triggers = new Transform[transform.childCount];
-        for (int i = 0; i < transform.childCount; ++i)
-            Triggers[i] = transform.GetChild(i);
 
-        DiceTosser = diceTosser;
         Enemy = enemy;
 
         Renderer.material.SetColor("_Color", Color.red);
@@ -42,10 +36,10 @@ public class Dice : MonoBehaviour
         Tossed = false;
     }
 
-    public void TossDice(DiceTosser diceTosser, bool enemy, Vector3 position, float force)
+    public void TossDice(bool enemy, Vector3 position, float force)
     {
         if (!DiceSetup)
-            Setup(diceTosser, enemy);
+            Setup(enemy);
 
         transform.position = position;
         transform.rotation = new Quaternion(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
@@ -94,7 +88,6 @@ public class Dice : MonoBehaviour
         else
             Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
-        for (int i = 0; i < Triggers.Length; ++i)
-            Triggers[i].gameObject.SetActive(active);
+        Triggers.SetActive(active);
     }
 }
