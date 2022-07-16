@@ -15,9 +15,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public UIManager UIManager;
     public DiceTosser DiceTosser;
+    public UnitPlacer UnitPlacer;
 
     public int[] DiceAmounts;
+
+    int Score = 0;
 
     GAME_STATES GameState;
 
@@ -37,7 +41,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Score += 10;
+            UIManager.UpdateScore(Score);
+        }
     }
 
     void EnterState()
