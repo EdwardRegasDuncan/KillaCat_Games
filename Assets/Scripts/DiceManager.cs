@@ -28,7 +28,7 @@ public class DiceManager : MonoBehaviour
     Dice SelectedDice;
     bool Dragging = false;
 
-    Plane Plane = new Plane(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
+    Plane Plane;
 
     void Awake()
     {
@@ -166,7 +166,7 @@ public class DiceManager : MonoBehaviour
 
     void PlaceDicesInventory(Transform inventory, List<Dice>[] dices, int diceAmount)
     {
-        Vector3 initialPos = inventory.position + inventory.right * (((diceAmount - 1) * DistanceBetweenDices) / -2.0f);
+        Vector3 initialPos = inventory.position + new Vector3(0.0f, 2.0f, 0.0f) + inventory.right * (((diceAmount - 1) * DistanceBetweenDices) / -2.0f);
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
             for (int j = 0; j < dices[i].Count; ++j)
