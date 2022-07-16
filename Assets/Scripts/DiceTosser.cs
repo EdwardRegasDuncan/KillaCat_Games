@@ -25,7 +25,7 @@ public class DiceTosser : MonoBehaviour
 
     void Start()
     {
-        Plane = new Plane(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
+        Plane = new Plane(Vector3.up, new Vector3(0.0f, 2.5f, 0.0f));
 
         for (int i = 0; i < (int)DICES.COUNT; ++i)
             Dices[i] = new List<Dice>();
@@ -38,7 +38,7 @@ public class DiceTosser : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 50f, 1 << 6))
+            if (Physics.Raycast(ray, out hit, 1000f, 1 << 6))
             {
                 SelectedDice = hit.transform.GetComponent<Dice>();
                 if (SelectedDice.Selectable())
