@@ -16,8 +16,6 @@ public class DiceManager : MonoBehaviour
 
     List<Dice>[] Dices = new List<Dice>[(int)DICES.COUNT];
     List<Dice>[] EnemyDices = new List<Dice>[(int)DICES.COUNT];
-    List<int>[] DiceValues = new List<int>[(int)DICES.COUNT];
-    List<int>[] EnemyDiceValues = new List<int>[(int)DICES.COUNT];
     int DiceAmount = 0;
     int EnemyDiceAmount = 0;
 
@@ -36,8 +34,6 @@ public class DiceManager : MonoBehaviour
         {
             Dices[i] = new List<Dice>();
             EnemyDices[i] = new List<Dice>();
-            DiceValues[i] = new List<int>();
-            EnemyDiceValues[i] = new List<int>();
         }
     }
 
@@ -109,36 +105,39 @@ public class DiceManager : MonoBehaviour
     public void TossDices(int[] diceAmounts, Vector3 position, float force, bool enemy)
     {
         List<Dice>[] dices = (!enemy) ? Dices : EnemyDices;
-        List<int>[] diceValues = (!enemy) ? DiceValues : EnemyDiceValues;
 
+        DiceInMovement = DiceAmount;
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
-            diceValues[i].Clear();
-
             for (int j = 0; j < diceAmounts[i]; ++j)
-            {
-                DiceInMovement += 1;
                 dices[i][j].TossDice(position, force);
-            }
         }
     }
 
     public void DiceStopped(Dice dice, int face)
     {
-        if (dice.IsFromTheEnemy())
-            EnemyDiceValues[(int)dice.Type].Add(face);
-        else
-            DiceValues[(int)dice.Type].Add(face);
-
         DiceInMovement -= 1;
 
         if (DiceInMovement <= 0)
-            GameManager.Instance.DiceValues(DiceValues, EnemyDiceValues);
+            GameManager.Instance.ActionEnded();
+    }
+
+    public void DiceInCard(bool entering, UnitCore.UNIT_TYPE unitType, Dice dice)
+    {
+        if (entering)
+        {
+            dice.UnitType = unitType;
+            DiceInMovement -= 1;
+        }
+        else
+        {
+            DiceInMovement += 1;
+        }
     }
 
     public void PlaceDicesInInventory()
     {
-        EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
+        DiceInMovement = DiceAmount;
 
         Vector3 initialPos = Inventory.position + Inventory.right * (((DiceAmount - 1) *  DistanceBetweenDices) / -2.0f);
         for (int i = 0; i < (int)DICES.COUNT; ++i)
@@ -153,8 +152,6 @@ public class DiceManager : MonoBehaviour
 
     public void PlaceDicesInFrontOfCamera()
     {
-        DisableDiceDragging();
-
         const float distance = 10.0f;
 
         int diceAmount = 0;
@@ -174,6 +171,24 @@ public class DiceManager : MonoBehaviour
         }
     }
 
+    #region GETTERS
+    public int GetDicesInMovement()
+    {
+        return DiceInMovement;
+    }
+    public List<Dice> GetDices()
+    {
+        List<Dice> dices = new List<Dice>();
+        for (int i = 0; i < Dices.Length; ++i)
+            dices.AddRange(Dices[i]);
+        return dices;
+    }
+    public int GetDiceAmount()
+    {
+        return DiceAmount;
+    }
+    #endregion
+
     #region DICE_DRAGGING
     public void EnableDiceDragging(Vector3 up, Vector3 point)
     {
@@ -183,6 +198,7 @@ public class DiceManager : MonoBehaviour
     public void DisableDiceDragging()
     {
         DraggingEnable = false;
+        Dragging = false;
     }
     #endregion
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum SCREENS
 {
@@ -29,10 +30,21 @@ public class GameManager : MonoBehaviour
 
     [Header("Controllers")]
     public DiceTosser DiceTosser;
-    public UnitPlacer UnitPlacer;
+
+    [Header("Each element is a unit type (Knight/Archer/Wizard)")]
+    public GameObject[] UnitPrefabs;
 
     [Header("Misc")]
     public int[] DiceAmounts;
+    public Transform PlayerSide;
+    public Transform EnemySide;
+    public UnityEvent ResetGrid;
+
+    List<GameObject> InstantiatedUnits = new List<GameObject>();
+
+    Transform GridNode;
+
+    Vector3 SelectedArea;
 
     int Score = 0;
     bool Waiting = false;
@@ -85,7 +97,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(RollStage());
                 break;
             case GAME_STATES.PLACEMENT:
-                UnitPlacer.Placing = true;
+                StartCoroutine(Placement());
                 break;
             case GAME_STATES.COMBAT:
                 break;
@@ -102,10 +114,15 @@ public class GameManager : MonoBehaviour
 
         // Show inventory dices
         DiceManager.PlaceDicesInInventory();
+        DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
-        while (!Input.GetKeyDown(KeyCode.Escape))
+
+        // Wait all dice to be placed
+        while (DiceManager.GetDicesInMovement() > 0)
             yield return null;
+
+        // Get back the board
         CameraManager.SetBoardCamera();
         DiceManager.DisableDiceDragging();
         yield return new WaitForSeconds(1.0f);
@@ -125,8 +142,80 @@ public class GameManager : MonoBehaviour
         while (Waiting)
             yield return null;
 
+        // Show the dices
+        DiceManager.PlaceDicesInFrontOfCamera();
+
         // Waiting the space to continue with the next state
         UIManager.ShowPressKeyText(true, "Space", "continue");
+        while (!Input.GetKeyDown(KeyCode.Space))
+            yield return null;
+        UIManager.ShowPressKeyText(false);
+
+        // Return the dices to the inventory
+        DiceManager.PlaceDicesInInventory();
+
+        ChangeState();
+    }
+
+    IEnumerator Placement()
+    {
+        List<Dice> playerDices = DiceManager.GetDices();
+        int i = 0;
+
+        while (i < playerDices.Count)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 1000f, 1 << 8))
+            {
+                if (hit.transform.parent == PlayerSide && !hit.transform.GetComponent<GridNode>().Used)
+                {
+                    if (GridNode != hit.transform)
+                    {
+                        if (GridNode != null)
+                        {
+                            GridNode.position = SelectedArea;
+                            GridNode = null;
+                        }
+                        GridNode = hit.transform;
+                        SelectedArea = GridNode.position;
+                        GridNode.position += new Vector3(0.0f, 2.0f, 0.0f);
+                    }
+                    if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
+                    {
+                        InstantiatedUnits.Add(Instantiate(UnitPrefabs[(int)playerDices[i].UnitType]));
+                        InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
+
+                        GridNode.position = SelectedArea;
+                        GridNode.GetComponent<GridNode>().Used = true;
+                        GridNode = null;
+
+                        i += 1;
+                    }
+                }
+                else
+                {
+                    if (GridNode != null)
+                    {
+                        GridNode.position = SelectedArea;
+                        GridNode = null;
+                    }
+                }
+            }
+            else if (GridNode != null)
+            {
+                GridNode.position = SelectedArea;
+                GridNode = null;
+            }
+
+            yield return null;
+        }
+
+        ResetGrid.Invoke();
+
+        // Waiting the space to continue with the next state
+        UIManager.ShowPressKeyText(true, "Space", "fight");
         while (!Input.GetKeyDown(KeyCode.Space))
             yield return null;
         UIManager.ShowPressKeyText(false);
@@ -140,9 +229,13 @@ public class GameManager : MonoBehaviour
         EnterState();
     }
 
-    public void DiceValues(List<int>[] diceValues, List<int>[] enemyDiceValues)
+    public void ActionEnded()
     {
-        DiceManager.PlaceDicesInFrontOfCamera();
         Waiting = false;
     }
+
+    /*IEnumerator ManageGridNode()
+    {
+        yield return null;
+    }*/
 }

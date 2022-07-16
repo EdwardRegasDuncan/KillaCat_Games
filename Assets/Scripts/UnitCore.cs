@@ -44,6 +44,8 @@ public class UnitCore : MonoBehaviour
         _Range = 0.0f;
         _Armour = 0.0f;
         _ArmourPiercing = 0.0f;
+
+        pause = true;
     }
     public UnitCore(
         Team assignedTeam,

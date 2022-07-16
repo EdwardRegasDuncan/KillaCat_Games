@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
     [Header("InGameUI")]
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI PressKeyText;
+    public Button ReadyButton;
 
     public void UpdateScore(int newScore)
     {
@@ -21,6 +23,11 @@ public class UIManager : MonoBehaviour
     {
         if (show) PressKeyText.text = "Press [" + key + "] to " + action;
         PressKeyText.gameObject.SetActive(show);
+    }
+
+    public void ActiveReadyButton(bool active)
+    {
+        ReadyButton.gameObject.SetActive(active);
     }
 
     public void ChangeScreen(SCREENS newScreen)
@@ -54,6 +61,11 @@ public class UIManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ReadyClicked()
+    {
+        GameManager.Instance.ActionEnded();
     }
     #endregion
 }
