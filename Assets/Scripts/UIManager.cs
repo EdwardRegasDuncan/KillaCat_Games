@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI PressKeyText;
     public Button ReadyButton;
+    public TextMeshProUGUI InfoText;
 
     public void UpdateScore(int newScore)
     {
@@ -28,6 +29,12 @@ public class UIManager : MonoBehaviour
     public void ActiveReadyButton(bool active)
     {
         ReadyButton.gameObject.SetActive(active);
+    }
+
+    public void ShowInfoText(bool show, string text = null)
+    {
+        if (show) InfoText.text = text;
+        InfoText.transform.parent.gameObject.SetActive(show);
     }
 
     public void ChangeScreen(SCREENS newScreen)

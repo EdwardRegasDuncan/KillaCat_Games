@@ -40,9 +40,7 @@ public class GameManager : MonoBehaviour
     public Transform EnemySide;
     public UnityEvent ResetGrid;
 
-    Transform GridNode;
-
-    Vector3 SelectedArea;
+    GridNode GridNode;
 
     int Score = 0;
     bool Waiting = false;
@@ -185,40 +183,42 @@ public class GameManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000f, 1 << 8))
             {
-                if (hit.transform.parent == PlayerSide && !hit.transform.GetComponent<GridNode>().Used)
+                GridNode gridNode = hit.transform.GetComponent<GridNode>();
+                if (hit.transform.parent == PlayerSide && !gridNode.Used)
                 {
-                    if (GridNode != hit.transform)
+                    if (GridNode != gridNode)
                     {
                         if (GridNode != null)
                         {
-                            GridNode.position = SelectedArea;
-                            GridNode = null;
+                            GridNode.Unselect();
+                            UIManager.ShowInfoText(false);
                         }
-                        GridNode = hit.transform;
-                        SelectedArea = GridNode.position;
-                        GridNode.position += new Vector3(0.0f, 2.0f, 0.0f);
+                        GridNode = gridNode;
+
+                        string msg = GridNode.Select(playerDices[i].DiceValue);
+                        if (msg != null) UIManager.ShowInfoText(true, msg);
                     }
                     if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
                     {
-                        GridNode.position = SelectedArea;
+                        UIManager.ShowInfoText(false);
+                        GridNode.Unselect();
                         GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[i].UnitType], playerDices[i].DiceValue);
                         GridNode = null;
 
                         i += 1;
                     }
                 }
-                else
+                else if (GridNode != null)
                 {
-                    if (GridNode != null)
-                    {
-                        GridNode.position = SelectedArea;
-                        GridNode = null;
-                    }
+                    UIManager.ShowInfoText(false);
+                    GridNode.Unselect();
+                    GridNode = null;
                 }
             }
             else if (GridNode != null)
             {
-                GridNode.position = SelectedArea;
+                UIManager.ShowInfoText(false);
+                GridNode.Unselect();
                 GridNode = null;
             }
 

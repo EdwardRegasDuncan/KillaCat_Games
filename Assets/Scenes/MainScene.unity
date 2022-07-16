@@ -331,6 +331,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &845775424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335792765108830786, guid: 7ea6c816f6840c4438a44250c7592f56, type: 3}
+  m_PrefabInstance: {fileID: 1332645419201280221}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &864159438
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +584,7 @@ MonoBehaviour:
   ScoreText: {fileID: 751461000}
   PressKeyText: {fileID: 380768075}
   ReadyButton: {fileID: 907085194}
+  InfoText: {fileID: 845775424}
 --- !u!114 &1331578676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,7 +602,7 @@ MonoBehaviour:
   - {fileID: 4704631026606255500, guid: 701b8ccf45ffcd24ea6bd0adba9d6cfd, type: 3}
   - {fileID: 3170798661715953083, guid: 1b375322106bc8d448f96fa0b2bfd340, type: 3}
   Inventory: {fileID: 656627482}
-  DiceSpawner: {fileID: 0}
+  DiceSpawner: {fileID: 1050397096}
   cam: {fileID: 1692150756}
 --- !u!1 &1416362590
 GameObject:
@@ -1394,12 +1406,28 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1911744066812148732, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.006500244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911744066812148732, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1911744066812148732, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.656
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911744066812148732, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911744066812148732, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911744066812148732, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2184068234181828534, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
       propertyPath: m_Layer

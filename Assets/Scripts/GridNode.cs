@@ -6,15 +6,16 @@ public class GridNode : MonoBehaviour
 {
     public bool Used = false;
 
-    public int numberPositions = 0;
+    public int NumberPositions = 0;
 
     List<GameObject> InstantiatedUnits = new List<GameObject>();
+    Vector3 OriginalPosition;
 
     void Start()
     {
         GameManager.Instance.ResetGrid.AddListener(ResetGridNode);
 
-        numberPositions = transform.childCount;
+        NumberPositions = transform.childCount;
     }
 
     void OnDestroy()
@@ -32,10 +33,23 @@ public class GridNode : MonoBehaviour
         InstantiatedUnits.Clear();
     }
 
+    public string Select(int amount)
+    {
+        OriginalPosition = transform.position;
+        transform.position += new Vector3(0.0f, 2.0f, 0.0f);
+
+        return (NumberPositions < amount) ? $"This tile can only have {NumberPositions} you will lose: <color=red>{amount - NumberPositions} units</color>" : null;
+    }
+
+    public void Unselect()
+    {
+        transform.position = OriginalPosition;
+    }
+
     public void InstantiateUnits(GameObject prefab, int amount)
     {
         Used = true;
-        int aux = Mathf.Min(amount, numberPositions);
+        int aux = Mathf.Min(amount, NumberPositions);
         for (int i = 0; i < aux; ++i)
         {
             InstantiatedUnits.Add(Instantiate(prefab, transform.GetChild(i)));
