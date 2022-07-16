@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
 
         // Show inventory dices
         DiceManager.PlaceDicesInInventory();
+        DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
 
@@ -141,11 +142,17 @@ public class GameManager : MonoBehaviour
         while (Waiting)
             yield return null;
 
+        // Show the dices
+        DiceManager.PlaceDicesInFrontOfCamera();
+
         // Waiting the space to continue with the next state
         UIManager.ShowPressKeyText(true, "Space", "continue");
         while (!Input.GetKeyDown(KeyCode.Space))
             yield return null;
         UIManager.ShowPressKeyText(false);
+
+        // Return the dices to the inventory
+        DiceManager.PlaceDicesInInventory();
 
         ChangeState();
     }
@@ -162,7 +169,7 @@ public class GameManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000f, 1 << 8))
             {
-                if (hit.transform.parent == PlayerSide)
+                if (hit.transform.parent == PlayerSide && !hit.transform.GetComponent<GridNode>().Used)
                 {
                     if (GridNode != hit.transform)
                     {
@@ -177,14 +184,14 @@ public class GameManager : MonoBehaviour
                     }
                     if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
                     {
-                        i += 1;
-
                         InstantiatedUnits.Add(Instantiate(UnitPrefabs[(int)playerDices[i].UnitType]));
                         InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
 
                         GridNode.position = SelectedArea;
                         GridNode.GetComponent<GridNode>().Used = true;
                         GridNode = null;
+
+                        i += 1;
                     }
                 }
                 else
@@ -206,6 +213,14 @@ public class GameManager : MonoBehaviour
         }
 
         ResetGrid.Invoke();
+
+        // Waiting the space to continue with the next state
+        UIManager.ShowPressKeyText(true, "Space", "fight");
+        while (!Input.GetKeyDown(KeyCode.Space))
+            yield return null;
+        UIManager.ShowPressKeyText(false);
+
+        ChangeState();
     }
 
     void ChangeState()
@@ -214,9 +229,8 @@ public class GameManager : MonoBehaviour
         EnterState();
     }
 
-    public void DiceValues()
+    public void ActionEnded()
     {
-        DiceManager.PlaceDicesInFrontOfCamera();
         Waiting = false;
     }
 

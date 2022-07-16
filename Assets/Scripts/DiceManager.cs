@@ -119,7 +119,7 @@ public class DiceManager : MonoBehaviour
         DiceInMovement -= 1;
 
         if (DiceInMovement <= 0)
-            GameManager.Instance.DiceValues();
+            GameManager.Instance.ActionEnded();
     }
 
     public void DiceInCard(bool entering, UnitCore.UNIT_TYPE unitType, Dice dice)
@@ -137,8 +137,6 @@ public class DiceManager : MonoBehaviour
 
     public void PlaceDicesInInventory()
     {
-        EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
-
         DiceInMovement = DiceAmount;
 
         Vector3 initialPos = Inventory.position + Inventory.right * (((DiceAmount - 1) *  DistanceBetweenDices) / -2.0f);
@@ -154,8 +152,6 @@ public class DiceManager : MonoBehaviour
 
     public void PlaceDicesInFrontOfCamera()
     {
-        DisableDiceDragging();
-
         const float distance = 10.0f;
 
         int diceAmount = 0;
