@@ -42,14 +42,14 @@ public class Dice : MonoBehaviour
         Tossed = false;
     }
 
-    public void TossDice(DiceTosser diceTosser, bool enemy)
+    public void TossDice(DiceTosser diceTosser, bool enemy, Vector3 position, float force)
     {
         if (!DiceSetup)
             Setup(diceTosser, enemy);
 
-        transform.position = new Vector3(85f, 10f, 6f);
+        transform.position = position;
         transform.rotation = new Quaternion(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        Rigidbody.AddForce(-1000, Random.Range(0, 250), Random.Range(0, 250));
+        Rigidbody.AddForce(force, Random.Range(0, 250), Random.Range(0, 250));
         Rigidbody.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
 
         Renderer.material.SetColor("_Color", Color.red);

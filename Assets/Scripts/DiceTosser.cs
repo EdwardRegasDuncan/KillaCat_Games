@@ -21,16 +21,20 @@ public class DiceTosser : MonoBehaviour
     Dice SelectedDice;
     bool Dragging;
 
+    public Camera cam;
+
     int DiceInMovement = 0;
 
-    void Start()
+    void Awake()
     {
         Plane = new Plane(Vector3.up, new Vector3(0.0f, 2.5f, 0.0f));
 
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
             Dices[i] = new List<Dice>();
+            EnemyDices[i] = new List<Dice>();
             DiceValues[i] = new List<int>();
+            EnemyDiceValues[i] = new List<int>();
         }
     }
 
@@ -65,14 +69,14 @@ public class DiceTosser : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TossDices(DiceAmounts);
+            // TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -1000);
         }
     }
 
-    public void TossDices(int[] diceAmounts)
+    public void TossDices(int[] diceAmounts, Vector3 position, float force, bool enemy)
     {
-        List<Dice>[] dices = (false) ? Dices : EnemyDices;
-        List<int>[] diceValues = (false) ? DiceValues : EnemyDiceValues;
+        List<Dice>[] dices = (!enemy) ? Dices : EnemyDices;
+        List<int>[] diceValues = (!enemy) ? DiceValues : EnemyDiceValues;
 
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
@@ -99,7 +103,7 @@ public class DiceTosser : MonoBehaviour
             for (int j = 0; j < dices[i].Count; ++j)
             {
                 DiceInMovement += 1;
-                dices[i][j].TossDice(this, false);
+                dices[i][j].TossDice(this, enemy, position, force);
             }
         }
     }
@@ -119,6 +123,18 @@ public class DiceTosser : MonoBehaviour
 
             if (DiceInMovement <= 0)
                 GameManager.Instance.DiceValues(DiceValues, EnemyDiceValues);
+        }
+    }
+
+
+    public void ShowDicesToScreen()
+    {
+        for (int i = 0; i < (int)DICES.COUNT; ++i)
+        {
+            for (int j = 0; j < Dices[i].Count; ++j)
+            {
+                Dices[i][j].transform.position = cam.transform.position + cam.transform.forward * 15f;
+            }
         }
     }
 }

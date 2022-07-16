@@ -12,7 +12,7 @@ public class UnitPlacer : MonoBehaviour
     Transform GridNode;
 
     Vector3 SelectedArea;
-    bool Placing = false;
+    public bool Placing = false;
 
     void Start()
     {

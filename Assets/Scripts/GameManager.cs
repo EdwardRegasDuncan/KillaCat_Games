@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameState = GAME_STATES.ROLL_STAGE;
-        ChangeState();
+        EnterState();
     }
 
     void Update()
@@ -53,9 +53,11 @@ public class GameManager : MonoBehaviour
         switch (GameState)
         {
             case GAME_STATES.ROLL_STAGE:
-                DiceTosser.TossDices(DiceAmounts);
+                DiceTosser.TossDices(DiceAmounts, new Vector3(85f, 10f, 6f), -800, false);
+                DiceTosser.TossDices(DiceAmounts, new Vector3(-60f, 10f, 6f), 1000, true);
                 break;
             case GAME_STATES.PLACEMENT:
+                UnitPlacer.Placing = true;
                 break;
             case GAME_STATES.COMBAT:
                 break;
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void DiceValues(List<int>[] diceValues, List<int>[] enemyDiceValues)
     {
-
+        DiceTosser.ShowDicesToScreen();
+        ChangeState();
     }
 }
