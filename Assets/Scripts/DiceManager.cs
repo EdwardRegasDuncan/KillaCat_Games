@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DiceManager : MonoBehaviour
 {
-    const float DistanceBetweenDices = 2.0f;
+    const float DistanceBetweenDices = 4.0f;
 
 
     [Header("Each element is a dice type (D4/D6/D10)")]

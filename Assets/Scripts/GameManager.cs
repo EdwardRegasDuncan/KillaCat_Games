@@ -119,8 +119,17 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         // Wait all dice to be placed
-        while (DiceManager.GetDicesInMovement() > 0)
+        Waiting = true;
+        bool showReadyButton = false;
+        while (Waiting)
+        {
+            if (!showReadyButton && DiceManager.GetDicesInMovement() <= 0)
+                UIManager.ActiveReadyButton(true);
+            else if (showReadyButton && DiceManager.GetDicesInMovement() > 0)
+                UIManager.ActiveReadyButton(false);
+
             yield return null;
+        }
 
         // Get back the board
         CameraManager.SetBoardCamera();
