@@ -9,6 +9,7 @@ public class Wizard : UnitCore
 
     private void Awake()
     {
+        _type = UNIT_TYPE.WIZARD;
         _HP = 50;
         _Speed = 3f;
         _AttackDamage = 50f;

@@ -108,6 +108,8 @@ public class DiceManager : MonoBehaviour
     {
         DiceInMovement = DiceAmount + EnemyDiceAmount;
 
+        SoundManager.PlaySound(SoundManager.Sound.DiceRolling);
+
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
             for (int j = 0; j < Dices[i].Count; ++j)

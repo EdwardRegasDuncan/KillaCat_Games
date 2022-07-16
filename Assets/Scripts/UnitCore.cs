@@ -33,6 +33,7 @@ public class UnitCore : MonoBehaviour
     public Material[] teamMaterials;
     public NavMeshAgent agent;
     public bool pause;
+    public UNIT_TYPE _type = UNIT_TYPE.KNIGHT;
 
     public int maxHealth = 100;
 
@@ -60,7 +61,8 @@ public class UnitCore : MonoBehaviour
         float AttackSpeed,
         float Range,
         float Armour,
-        float ArmourPiercing)
+        float ArmourPiercing,
+        UNIT_TYPE type)
     {
         team = assignedTeam;
         _Speed = Speed;
@@ -70,6 +72,7 @@ public class UnitCore : MonoBehaviour
         _Armour = Armour;
         _ArmourPiercing = ArmourPiercing;
         _HP = HP;
+        _type = type;
     }
 
     public bool FindTarget()
@@ -180,7 +183,22 @@ public class UnitCore : MonoBehaviour
         {
             agent.isStopped = true;
             // attack
-            SoundManager.PlaySound(SoundManager.Sound.TropAttack, transform.localPosition); // Distinc between archer and melee
+
+            switch(_type)
+            {
+                case UNIT_TYPE.ARCHER:
+                    SoundManager.PlaySound(SoundManager.Sound.TropShooting, transform.localPosition);
+                    break;
+                case UNIT_TYPE.KNIGHT:
+                    SoundManager.PlaySound(SoundManager.Sound.TropAttack, transform.localPosition);
+                    break;
+                case UNIT_TYPE.WIZARD:
+                    SoundManager.PlaySound(SoundManager.Sound.TropSpell, transform.localPosition);
+                    break;
+                default:
+                    break;
+            }
+
             _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
             StartCoroutine(AttackCooldown());
             attack_event?.Invoke(this, EventArgs.Empty);

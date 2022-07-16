@@ -9,6 +9,7 @@ public class Knight : UnitCore
 
     private void Awake()
     {
+        _type = UNIT_TYPE.KNIGHT;
         _HP = 100;
         _Speed = 7f;
         _AttackDamage = 20f;

@@ -12,6 +12,7 @@ public class Archer : UnitCore
 
     private void Awake()
     {
+        _type = UNIT_TYPE.ARCHER;
         _HP = 75;
         _Speed = 5f;
         _AttackDamage = 5f;

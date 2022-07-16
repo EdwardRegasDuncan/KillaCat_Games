@@ -219,10 +219,12 @@ public class GameManager : MonoBehaviour
                     }
                     if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
                     {
+                        SoundManager.PlaySound(SoundManager.Sound.TropPlacing, hit.transform.localPosition);
                         UIManager.ShowInfoText(false);
                         GridNode.Unselect();
                         GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[playerIdx].UnitType], playerDices[playerIdx].DiceValue, UnitCore.Team.Player, PlayerUnitContainer);
                         GridNode = null;
+
 
                         playerIdx += 1;
                     }
