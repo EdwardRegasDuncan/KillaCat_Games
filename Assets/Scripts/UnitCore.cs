@@ -89,7 +89,7 @@ public class UnitCore : MonoBehaviour
     public void TakeDamage(float damage, float armourPiercing)
     {
         float finalArmour = _Armour - armourPiercing;
-        float finalDamage = damage - (finalArmour/100 * damage);
+        float finalDamage = damage -  Mathf.Clamp(finalArmour/100 * damage, 0, 100);
 
         _HP -= finalDamage;
         
@@ -99,7 +99,7 @@ public class UnitCore : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         gameObject.tag = team.ToString();
@@ -136,8 +136,7 @@ public class UnitCore : MonoBehaviour
         else if (!_attackCooldown)
         {
             _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
-            _attackCooldown = true;
-            //StartCoroutine(AttackCooldown());
+            StartCoroutine(AttackCooldown());
         }
         
     }
