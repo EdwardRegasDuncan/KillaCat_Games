@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class Archer : UnitCore
 {
     float _specialCharge;
     float _chargeRate;
+
+    public GameObject _arrowPrefab;
 
     private void Awake()
     {
@@ -16,5 +19,15 @@ public class Archer : UnitCore
         _Range = 15f;
         _Armour = 5f;
         _ArmourPiercing = 0f;
+
+        attack_event += ArrowParticle;
+
     }
+    
+    private void ArrowParticle(object sender, EventArgs e)
+    {
+        GameObject arrow = Instantiate(_arrowPrefab, transform.position, Quaternion.identity);
+        arrow.GetComponent<ArrowController>()._target = _target;
+    }
+    
 }

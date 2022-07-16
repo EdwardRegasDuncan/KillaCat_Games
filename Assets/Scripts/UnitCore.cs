@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,8 @@ public class UnitCore : MonoBehaviour
     public bool pause;
 
     public int maxHealth = 100;
+
+    public event EventHandler attack_event;
 
     public HealthBar healthBar;
 
@@ -124,7 +127,8 @@ public class UnitCore : MonoBehaviour
         GetComponentInChildren<Renderer>().material = teamMaterials[(int)team];
 
         maxHealth = _HP;
-        healthBar.SetMaxHealth(maxHealth);  
+        healthBar.SetMaxHealth(maxHealth);
+
     }
 
     private void Update()
@@ -141,7 +145,7 @@ public class UnitCore : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (!_target)
+        if (_target == null)
         {
             if (!FindTarget())
             {
@@ -153,7 +157,6 @@ public class UnitCore : MonoBehaviour
         Vector3 direction = _target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = lookRotation;
-
 
         // check if in range of _target
         if (Vector3.Distance(transform.position, _target.position) > _Range)
@@ -173,6 +176,7 @@ public class UnitCore : MonoBehaviour
             // attack
             _target.GetComponent<UnitCore>().TakeDamage(_AttackDamage, _ArmourPiercing);
             StartCoroutine(AttackCooldown());
+            attack_event?.Invoke(this, EventArgs.Empty);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
