@@ -32,8 +32,6 @@ public class UnitCore : MonoBehaviour
     public NavMeshAgent agent;
     bool pause;
 
-    public TMP_Text HPText;
-
     public UnitCore()
     {
         team = Team.Enemy;
@@ -124,8 +122,6 @@ public class UnitCore : MonoBehaviour
         {
             return;
         }
-
-        HPText.text = _HP.ToString();
 
         if (!_isAlive)
         {

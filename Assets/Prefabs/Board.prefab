@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 4075142937022648647}
   - component: {fileID: 8033977956423292635}
   - component: {fileID: 3191259806031807757}
+  - component: {fileID: 6486098704411755707}
   m_Layer: 8
   m_Name: MSH_Tablero006
   m_TagString: Untagged
@@ -389,6 +390,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.0000076293945, z: 0}
+--- !u!114 &6486098704411755707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588844640595673855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &1910564907363400388
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +803,7 @@ GameObject:
   - component: {fileID: 2642125751652687703}
   - component: {fileID: 3994527328126447768}
   - component: {fileID: 2298096097828491924}
+  - component: {fileID: 3696271858249991462}
   m_Layer: 8
   m_Name: MSH_Tablero004
   m_TagString: Untagged
@@ -874,6 +889,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.000005722046, z: 0}
+--- !u!114 &3696271858249991462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530515399657184034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &2567326274820929888
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +914,7 @@ GameObject:
   - component: {fileID: 3400093569840852338}
   - component: {fileID: 5327516821890272201}
   - component: {fileID: 6090622036726522977}
+  - component: {fileID: 4621116403887952831}
   m_Layer: 8
   m_Name: MSH_Tablero005
   m_TagString: Untagged
@@ -971,6 +1000,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4621116403887952831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567326274820929888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &2694065246748090699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1168,7 @@ GameObject:
   - component: {fileID: 8105861838715429305}
   - component: {fileID: 368713463442637846}
   - component: {fileID: 1060367926966919903}
+  - component: {fileID: 4245917070250192096}
   m_Layer: 8
   m_Name: MSH_Tablero012
   m_TagString: Untagged
@@ -1211,6 +1254,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.000005722046, z: 0}
+--- !u!114 &4245917070250192096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082973474550379502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &3124240649764245549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1473,7 @@ GameObject:
   - component: {fileID: 6460138028732195732}
   - component: {fileID: 22494948628510892}
   - component: {fileID: 4651791613545387792}
+  - component: {fileID: 4777662248704017004}
   m_Layer: 8
   m_Name: MSH_Tablero009
   m_TagString: Untagged
@@ -1502,6 +1559,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4777662248704017004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143410278446996662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &5061854716016752054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1615,7 @@ GameObject:
   - component: {fileID: 6574153399286321029}
   - component: {fileID: 109914879177768224}
   - component: {fileID: 1647206374200987672}
+  - component: {fileID: 8348093813662913964}
   m_Layer: 8
   m_Name: MSH_Tablero003
   m_TagString: Untagged
@@ -1630,6 +1701,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.0000038146973, z: 0}
+--- !u!114 &8348093813662913964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5158319264741217495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &5376113686771378052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,6 +1726,7 @@ GameObject:
   - component: {fileID: 6412856631655129211}
   - component: {fileID: 5921235992889253141}
   - component: {fileID: 5873399872512644973}
+  - component: {fileID: 7709940577133655504}
   m_Layer: 8
   m_Name: MSH_Tablero007
   m_TagString: Untagged
@@ -1727,6 +1812,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.0000038146973, z: 0}
+--- !u!114 &7709940577133655504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376113686771378052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &5672007823086660938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,6 +1837,7 @@ GameObject:
   - component: {fileID: 7823193428909967198}
   - component: {fileID: 4419725309835746116}
   - component: {fileID: 1396859851918189965}
+  - component: {fileID: 116851768704147968}
   m_Layer: 8
   m_Name: MSH_Tablero
   m_TagString: Untagged
@@ -1824,6 +1923,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &116851768704147968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672007823086660938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &5877360501532461934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1945,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6546901868922098132}
-  - component: {fileID: 6724434914781705788}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -1863,25 +1974,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6724434914781705788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877360501532461934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f05d93d792d38249a4400c49a16bed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitPrefabs:
-  - {fileID: 9175248016683701169, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
-  - {fileID: 8063707489064908912, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
-  - {fileID: 4128805337750170723, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
-  PlayerSide: {fileID: 8295801381897213890}
-  EnemySide: {fileID: 2477475242120513904}
-  Placing: 0
 --- !u!1 &6165438580385993229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,6 +2180,7 @@ GameObject:
   - component: {fileID: 5372150858597138542}
   - component: {fileID: 3692827676716120777}
   - component: {fileID: 7432833708363057667}
+  - component: {fileID: 8404098721135519960}
   m_Layer: 8
   m_Name: MSH_Tablero011
   m_TagString: Untagged
@@ -2173,6 +2266,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.0000038146973, z: 0}
+--- !u!114 &8404098721135519960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031099376555983419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &7516005511439184099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,6 +2337,7 @@ GameObject:
   - component: {fileID: 8899797227610829236}
   - component: {fileID: 489886338571661095}
   - component: {fileID: 2438479433432689530}
+  - component: {fileID: 6605644674525888839}
   m_Layer: 8
   m_Name: MSH_Tablero008
   m_TagString: Untagged
@@ -2316,6 +2423,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.000005722046, z: 0}
+--- !u!114 &6605644674525888839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572732040773946823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &7672149380574957759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2448,7 @@ GameObject:
   - component: {fileID: 4381572159912916706}
   - component: {fileID: 3303811903015557241}
   - component: {fileID: 7950260090952586724}
+  - component: {fileID: 3678723691094485879}
   m_Layer: 8
   m_Name: MSH_Tablero002
   m_TagString: Untagged
@@ -2413,6 +2534,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3678723691094485879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672149380574957759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &7803903497699962441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,6 +2753,7 @@ GameObject:
   - component: {fileID: 5732903386068353411}
   - component: {fileID: 8120031480364500496}
   - component: {fileID: 5687242512953315706}
+  - component: {fileID: 1943129077410591097}
   m_Layer: 8
   m_Name: MSH_Tablero001
   m_TagString: Untagged
@@ -2704,6 +2839,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1943129077410591097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995299643535427845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &8435449798283368378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,6 +2864,7 @@ GameObject:
   - component: {fileID: 7496209022005368390}
   - component: {fileID: 7571021251627412403}
   - component: {fileID: 6222086106319165463}
+  - component: {fileID: 3099488486378459511}
   m_Layer: 8
   m_Name: MSH_Tablero014
   m_TagString: Untagged
@@ -2801,6 +2950,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.0000076293945, z: 0}
+--- !u!114 &3099488486378459511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435449798283368378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &8614737443267373159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +3072,7 @@ GameObject:
   - component: {fileID: 8852237751082183062}
   - component: {fileID: 2719841917449963434}
   - component: {fileID: 2201602539454268232}
+  - component: {fileID: 168129891501863690}
   m_Layer: 8
   m_Name: MSH_Tablero010
   m_TagString: Untagged
@@ -2995,6 +3158,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0.0000076293945, z: 0}
+--- !u!114 &168129891501863690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614927333285663551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1 &8821819609300458369
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3280,7 @@ GameObject:
   - component: {fileID: 2021448228682884003}
   - component: {fileID: 4290856238072420880}
   - component: {fileID: 2321596568641320528}
+  - component: {fileID: 2306572163488507353}
   m_Layer: 8
   m_Name: MSH_Tablero013
   m_TagString: Untagged
@@ -3189,6 +3366,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50.00001, z: 5.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2306572163488507353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9067847502699102660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b13f33421c673468d65ac10873efc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Used: 0
 --- !u!1001 &2264853074328166462
 PrefabInstance:
   m_ObjectHideFlags: 0
