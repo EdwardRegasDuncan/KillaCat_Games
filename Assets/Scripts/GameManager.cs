@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
 
         // Show inventory dices
         DiceManager.PlaceDicesInInventory(true);
-        DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 0.5f, 0.0f));
+        DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 2.0f, 0.0f));
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
 

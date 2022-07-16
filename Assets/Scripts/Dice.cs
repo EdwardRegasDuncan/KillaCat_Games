@@ -20,8 +20,6 @@ public class Dice : MonoBehaviour
     public GameObject Triggers;
     public Renderer Renderer;
 
-    bool DiceSetup = false;
-
     Rigidbody Rigidbody;
 
     bool Enemy;
