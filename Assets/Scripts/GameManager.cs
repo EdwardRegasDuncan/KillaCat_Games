@@ -40,8 +40,6 @@ public class GameManager : MonoBehaviour
     public Transform EnemySide;
     public UnityEvent ResetGrid;
 
-    List<GameObject> InstantiatedUnits = new List<GameObject>();
-
     Transform GridNode;
 
     Vector3 SelectedArea;
@@ -100,8 +98,10 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(Placement());
                 break;
             case GAME_STATES.COMBAT:
+                StartCoroutine(Combat());
                 break;
             case GAME_STATES.DAMAGE_PHASE:
+                StartCoroutine(DamagePhase());
                 break;
         }
     }
@@ -150,8 +150,8 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, -18f), -800, false);
-        DiceManager.TossDices(DiceAmounts, new Vector3(84f, 10f, -18f), 1000, true);
+        DiceManager.TossDices(DiceAmounts, new Vector3(84f, 10f, -18f), -800, false);
+        DiceManager.TossDices(DiceAmounts, new Vector3(-60f, 10f, -18f), 1000, true);
 
         // Waiting the dices values
         Waiting = true;
@@ -200,11 +200,8 @@ public class GameManager : MonoBehaviour
                     }
                     if (Input.GetMouseButtonDown(0) && !GridNode.GetComponent<GridNode>().Used)
                     {
-                        InstantiatedUnits.Add(Instantiate(UnitPrefabs[(int)playerDices[i].UnitType]));
-                        InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
-
                         GridNode.position = SelectedArea;
-                        GridNode.GetComponent<GridNode>().Used = true;
+                        GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[i].UnitType], playerDices[i].DiceValue);
                         GridNode = null;
 
                         i += 1;
@@ -228,8 +225,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        ResetGrid.Invoke();
-
         // Waiting the space to continue with the next state
         UIManager.ShowPressKeyText(true, "Space", "fight");
         while (!Input.GetKeyDown(KeyCode.Space))
@@ -237,6 +232,18 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         ChangeState();
+    }
+
+    IEnumerator Combat()
+    {
+        yield return null;
+    }
+
+    IEnumerator DamagePhase()
+    { 
+        yield return null;
+
+        ResetGrid.Invoke();
     }
 
     void ChangeState()
