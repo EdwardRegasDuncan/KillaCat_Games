@@ -52,9 +52,15 @@ public class GridNode : MonoBehaviour
         int aux = Mathf.Min(amount, NumberPositions);
         for (int i = 0; i < aux; ++i)
         {
-            InstantiatedUnits.Add(Instantiate(prefab, container.transform));
-            InstantiatedUnits[InstantiatedUnits.Count - 1].transform.position = transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f);
-            InstantiatedUnits[InstantiatedUnits.Count - 1].GetComponent<UnitCore>().team = team;
+            GameObject gameObject = Instantiate(
+                prefab, 
+                transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f), 
+                Quaternion.Euler(0.0f, (team == UnitCore.Team.Player) ? -90.0f : 90.0f, 0.0f), 
+                container.transform
+            );
+            gameObject.transform.position = transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f);
+            gameObject.GetComponent<UnitCore>().team = team;
+            InstantiatedUnits.Add(gameObject);
         }
     }
 }
