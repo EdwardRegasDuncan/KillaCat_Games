@@ -2,8 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DICES
+{
+    D4 = 0,
+    D6 = 1,
+    D10 = 2,
+    COUNT = 3,
+}
+
 public class Dice : MonoBehaviour
 {
+    public DICES Type;
+    public int DiceValue = -1;
+
     bool DiceSetup = false;
 
     Rigidbody Rigidbody;
@@ -16,7 +27,6 @@ public class Dice : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         Renderer = GetComponent<Renderer>();
-
         Triggers = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; ++i)
             Triggers[i] = transform.GetChild(i);
@@ -41,18 +51,22 @@ public class Dice : MonoBehaviour
         Tossed = true;
     }
 
-    public void TriggerDetection(string triggerName)
+    public int TriggerDetection(string triggerName)
     {
         if (Rigidbody.velocity != Vector3.zero)
-            return;
+            return -1;
 
         string[] splittedName = triggerName.Split('_');
+
+        DiceValue = int.Parse(splittedName[1]);
 
         Debug.Log("Dice face:" + triggerName);
 
         Renderer.material.SetColor("_Color", Color.green);
         ActivateDice(false);
         Tossed = false;
+
+        return DiceValue;
     }
 
     public bool Selectable()

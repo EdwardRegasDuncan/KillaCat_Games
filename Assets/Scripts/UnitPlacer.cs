@@ -23,7 +23,7 @@ public class UnitPlacer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SelectionAreaGO.SetActive(true);
+            //SelectionAreaGO.SetActive(true);
             Placing = true;
         }
 
@@ -54,7 +54,7 @@ public class UnitPlacer : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 50f, 1 << 7))
+            if (Physics.Raycast(ray, out hit, 1000f, 1 << 8))
             {
                 if (GridNode != hit.transform)
                 {
@@ -65,21 +65,21 @@ public class UnitPlacer : MonoBehaviour
                     }
                     else
                     {
-                        SelectionAreaGO.SetActive(true);
+                        //SelectionAreaGO.SetActive(true);
                     }
 
                     GridNode = hit.transform;
 
                     SelectedArea = GridNode.position;
 
-                    GridNode.position += new Vector3(0.0f, 0.1f, 0.0f);
+                    GridNode.position += new Vector3(0.0f, 2.0f, 0.0f);
 
-                    SelectionAreaGO.transform.position = GridNode.position + new Vector3(0.0f, 0.55f, 0.0f);
+                    //SelectionAreaGO.transform.position = GridNode.position + new Vector3(0.0f, 0.55f, 0.0f);
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Unit.transform.position = SelectedArea + new Vector3(0.0f, 1.0f, 0.0f);
-                    SelectionAreaGO.SetActive(false);
+                    Unit.transform.position = SelectedArea + new Vector3(0.0f, 2.0f, 0.0f);
+                    //SelectionAreaGO.SetActive(false);
 
                     GridNode.position = SelectedArea;
                     GridNode = null;
@@ -90,7 +90,7 @@ public class UnitPlacer : MonoBehaviour
             {
                 GridNode.position = SelectedArea;
                 GridNode = null;
-                SelectionAreaGO.SetActive(false);
+                //SelectionAreaGO.SetActive(false);
             }
 #endif
         }
