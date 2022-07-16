@@ -129,11 +129,21 @@ public class DiceTosser : MonoBehaviour
 
     public void ShowDicesToScreen()
     {
+        const float distance = 10.0f;
+
+        int diceAmount = 0;
+        for (int i = 0; i < (int)DICES.COUNT; ++i)
+            diceAmount += Dices[i].Count;
+
+        Vector3 initialPos = cam.transform.position + cam.transform.forward * 15f + cam.transform.right * (-distance / 2.0f);
+        float deltaDistance = distance / (diceAmount - 1);
         for (int i = 0; i < (int)DICES.COUNT; ++i)
         {
             for (int j = 0; j < Dices[i].Count; ++j)
             {
-                Dices[i][j].transform.position = cam.transform.position + cam.transform.forward * 15f;
+                Dices[i][j].transform.position = initialPos;
+
+                initialPos += cam.transform.right * deltaDistance;
             }
         }
     }
