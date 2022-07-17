@@ -7,7 +7,10 @@ public enum SCREENS
 {
     MENUS = 0,
     IN_GAME = 1,
-    RESULT = 2
+    RESULT = 2,
+    SETTINGS = 3,
+    HELP = 4,
+    CREDITS = 5
 }
 
 public enum GAME_STATES
@@ -85,6 +88,11 @@ public class GameManager : MonoBehaviour
             PlayerHealth -= 1;
             PlayerLifeCounter.SetHealth(PlayerHealth);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         PlayerLifeCounter.SetHealth(PlayerHealth);
         EnemyLifeCounter.SetHealth(EnemyHealth);
     }

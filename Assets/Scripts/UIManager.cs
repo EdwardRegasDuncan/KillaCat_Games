@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
 {
     public GameObject Menu;
     public GameObject InGame;
+    public GameObject Settings;
+    public GameObject Help;
+    public GameObject Credits;
 
     [Header("InGameUI")]
     public TextMeshProUGUI ScoreText;
@@ -60,6 +63,10 @@ public class UIManager : MonoBehaviour
     {
         Menu.SetActive(false);
         InGame.SetActive(false);
+        Settings.SetActive(false);
+        Help.SetActive(false);
+        Credits.SetActive(false);
+        
 
         switch (newScreen)
         {
@@ -70,6 +77,15 @@ public class UIManager : MonoBehaviour
                 InGame.SetActive(true);
                 break;
             case SCREENS.RESULT:
+                break;
+            case SCREENS.SETTINGS:
+                Settings.SetActive(true);
+                break;
+            case SCREENS.HELP:
+                Help.SetActive(true);
+                break;
+            case SCREENS.CREDITS:
+                Credits.SetActive(true);
                 break;
         }
     }
@@ -96,5 +112,30 @@ public class UIManager : MonoBehaviour
         SoundManager.PlaySound(SoundManager.Sound.UISound);
         GameManager.Instance.ActionEnded();
     }
+
+    public void SettingsClicked()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
+        GameManager.Instance.ChangeScreen(SCREENS.SETTINGS);
+    }
+    
+    public void HelpClicked()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
+        GameManager.Instance.ChangeScreen(SCREENS.HELP);
+    }
+
+    public void CreditsClicked()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
+        GameManager.Instance.ChangeScreen(SCREENS.CREDITS);
+    }
+
+    public void CloseWindowClicked()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.UISound);
+        GameManager.Instance.ChangeScreen(SCREENS.MENUS);
+    }
+
     #endregion
 }
