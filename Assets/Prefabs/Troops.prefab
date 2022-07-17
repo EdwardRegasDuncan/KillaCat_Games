@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 375714222043245157}
   - component: {fileID: 375714222043245158}
   m_Layer: 0
-  m_Name: Trops
+  m_Name: Troops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

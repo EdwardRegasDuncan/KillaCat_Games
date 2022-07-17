@@ -24,15 +24,20 @@ public class Archer : UnitCore
         _ArmourPiercing = 0f;
 
         attack_event += ArrowParticle;
+        attack_event += AttackAnim;
 
     }
     
     private void ArrowParticle(object sender, EventArgs e)
     {
-        GameObject arrow = Instantiate(_arrowPrefab, transform.position, transform.rotation);
-        arrow.GetComponent<ArrowController>()._target = _target;
+        GameObject arrow = Instantiate(_arrowPrefab, transform.position, transform.rotation, transform);
+        arrow.GetComponent<ProjectileController>()._target = _target;
     }
-
+    private void AttackAnim(object sender, EventArgs e)
+    {
+        current_state = UNIT_STATE.ATTACK_SPELL;
+        SoundManager.PlaySound(SoundManager.Sound.TropSpell, transform.localPosition);
+    }
    
 
 }

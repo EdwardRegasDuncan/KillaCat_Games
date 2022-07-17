@@ -84,6 +84,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2aaa620015ef0b4f89e89478602d74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  current_state: 0
+  team: 0
+  _b_state: 0
+  _type: 0
   _HP: 100
   _Speed: 0
   _AttackDamage: 0
@@ -93,13 +97,11 @@ MonoBehaviour:
   _ArmourPiercing: 0
   _isAlive: 1
   _target: {fileID: 0}
-  team: 0
   teamMaterials:
   - {fileID: 2100000, guid: b65ac606f6a2dd64caab406f346d42e1, type: 2}
   - {fileID: 2100000, guid: 8873bce7b8cdc1c4f9c392011d66fc28, type: 2}
   agent: {fileID: 0}
-  pause: 1
-  _type: 0
+  pause: 0
   maxHealth: 100
   healthBar: {fileID: 4508939626634243070}
 --- !u!1001 &3665727407741591921
