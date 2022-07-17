@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     int Score = 0;
     bool Waiting = false;
 
+    public Transform EnemyPos;
+    public Transform PlayerPos;
 
     SCREENS CurrentScreen;
     GAME_STATES GameState;
@@ -144,7 +146,7 @@ public class GameManager : MonoBehaviour
 
         // Show inventory dices
         DiceManager.PlaceDicesInInventory(true);
-        DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 2.0f, 0.0f));
+        DiceManager.EnableDiceDragging(Vector3.up, new Vector3(0.0f, 14.50f, 0.0f));
         CameraManager.SetPlayerInventoryCamera();
         yield return new WaitForSeconds(1.0f);
 
@@ -183,7 +185,7 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceManager.TossDices(new Vector3(84f, 10f, -18f), -800, new Vector3(-60f, 10f, -18f), 1000);
+        DiceManager.TossDices(EnemyPos.localPosition, -800, PlayerPos.localPosition, 1000);
 
         // Waiting the dices values
         Waiting = true;
