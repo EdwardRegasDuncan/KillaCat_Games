@@ -48,7 +48,7 @@ public class UnitCore : MonoBehaviour
     
     public Material[] teamMaterials;
     public NavMeshAgent agent;
-    public bool pause;
+    [SerializeField] bool pause;
 
     public int maxHealth = 100;
 
@@ -161,6 +161,16 @@ public class UnitCore : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
 
     }
+
+    public void UnPause()
+    {
+        pause = false;
+    }
+    public void Pause()
+    {
+        pause = true;
+    }
+
 
     private void Update()
     {

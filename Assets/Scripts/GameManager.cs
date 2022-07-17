@@ -279,11 +279,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Combat()
     {
-        for (int i = 0; i < PlayerUnitContainer.childCount; ++i)
-            PlayerUnitContainer.GetChild(i).GetComponent<UnitCore>().pause = false;
 
-        for (int i = 0; i < EnemyUnitContainer.childCount; ++i)
-            EnemyUnitContainer.GetChild(i).GetComponent<UnitCore>().pause = false;
+        foreach (Transform playerUnit in PlayerUnitContainer)
+            playerUnit.GetComponent<UnitCore>().UnPause();
+        foreach (Transform enemyUnit in EnemyUnitContainer)
+            enemyUnit.GetComponent<UnitCore>().UnPause();
 
         // TODO: make the units fight
 

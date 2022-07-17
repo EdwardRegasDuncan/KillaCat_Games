@@ -101,7 +101,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b65ac606f6a2dd64caab406f346d42e1, type: 2}
   - {fileID: 2100000, guid: 8873bce7b8cdc1c4f9c392011d66fc28, type: 2}
   agent: {fileID: 0}
-  pause: 0
+  pause: 1
   maxHealth: 100
   healthBar: {fileID: 4508939626634243070}
 --- !u!1001 &3665727407741591921
