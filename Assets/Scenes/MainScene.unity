@@ -252,7 +252,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.056497, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.056497, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1841,11 +1841,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c8e62fe76281441b89ca4c5e353d19, type: 3}
---- !u!1 &1514383845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7516005511439184099, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
-  m_PrefabInstance: {fileID: 6724434913763171727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1516829625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,11 +1903,6 @@ Transform:
   m_Father: {fileID: 946975492}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1545659686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2694065246748090699, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
-  m_PrefabInstance: {fileID: 6724434913763171727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1592845187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2326292393039237848, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
@@ -2143,30 +2133,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1696334192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5877360501532461934, guid: b3bd1a7d38572954fadafd6299d86435, type: 3}
-  m_PrefabInstance: {fileID: 6724434913763171727}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1696334194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696334192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cf07f38cf8e1674386fc461ff532e24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tiles:
-  - {fileID: 919132149155446097, guid: 01812aa56ababe74e9f48f2b9e8066d8, type: 3}
-  - {fileID: 919132149155446097, guid: a155a0f1a070dc54da68a68d384b0d10, type: 3}
-  - {fileID: 919132149155446097, guid: c57c84a68f4d6bd4e96f5d1251b1c596, type: 3}
-  - {fileID: 919132149155446097, guid: c9e81447b19ae9d45a2a051da90d9d7b, type: 3}
-  _playerSide: {fileID: 1545659686}
-  _enemySide: {fileID: 1514383845}
 --- !u!1 &1748067725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2595,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.056497, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
