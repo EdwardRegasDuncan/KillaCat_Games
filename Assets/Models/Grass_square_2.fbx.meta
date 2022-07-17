@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 687f047ce1f41aa469a22fab38ea3d4e
+guid: 896085a62fc39e744a72e81caa65bea3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_book
-    second: {fileID: 2100000, guid: 143ba571f0e3a6a46b8489c48822738a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_bookPaper
-    second: {fileID: 2100000, guid: 4b1de7ad1bf343e48925d47b58a24ef8, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

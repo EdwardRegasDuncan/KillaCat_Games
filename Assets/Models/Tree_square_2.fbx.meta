@@ -3,7 +3,32 @@ guid: 977b2d31198454a4ba97664c1147515c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Board
+    second: {fileID: 2100000, guid: 7778bcc80b1d706429b1b729aa898015, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_TreeLeaf
+    second: {fileID: 2100000, guid: 976c28e00d8ac7a4c9bb07bd280b73d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_grass
+    second: {fileID: 2100000, guid: 17d2c8b78d6feeb47a4f1b884bdd0832, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_rock_
+    second: {fileID: 2100000, guid: 2e795cfcdfcd48140a65d0dcca99735b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_treeTrunk
+    second: {fileID: 2100000, guid: 1594b6cdb724ed042a770d30a9e81a8e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

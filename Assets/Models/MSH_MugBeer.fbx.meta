@@ -3,7 +3,17 @@ guid: 9118b06f9d84c8344b0d86af05ccc9d4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Mug
+    second: {fileID: 2100000, guid: e75576cc28f890641bd8e5769cf810da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Mughandle
+    second: {fileID: 2100000, guid: 905aff9b9bd4e8d4f933d4fc8b4806d4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

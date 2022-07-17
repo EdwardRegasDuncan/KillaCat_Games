@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2022
 		Month: 7
 		Day: 17
-		Hour: 4
-		Minute: 4
+		Hour: 16
+		Minute: 34
 		Second: 6
-		Millisecond: 382
+		Millisecond: 607
 	}
 	Creator: "FBX SDK/FBX Plugins version 2020.0.1"
 	OtherFlags:  {
@@ -37,13 +37,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2021"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "17/07/2022 02:04:06.381"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "17/07/2022 14:34:06.607"
 			P: "Original|FileName", "KString", "", "", "C:\Users\lalog\Documents\Personal\Jam\Models\Tablero\MSH_Book.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2021"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "17/07/2022 02:04:06.381"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "17/07/2022 14:34:06.607"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\lalog\Documents\3ds Max 2021"
 			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\lalog\Documents\Personal\Jam\Models\Tablero\Tablero.max"
 		}
@@ -80,7 +80,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2770358498400, "", "Scene" {
+	Document: 1492255519280, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -100,7 +100,7 @@ References:  {
 
 Definitions:  {
 	Version: 100
-	Count: 4
+	Count: 10
 	ObjectType: "GlobalSettings" {
 		Count: 1
 	}
@@ -196,7 +196,7 @@ Definitions:  {
 		}
 	}
 	ObjectType: "Material" {
-		Count: 1
+		Count: 2
 		PropertyTemplate: "FbxSurfacePhong" {
 			Properties70:  {
 				P: "ShadingModel", "KString", "", "", "Phong"
@@ -224,13 +224,24 @@ Definitions:  {
 			}
 		}
 	}
+	ObjectType: "CollectionExclusive" {
+		Count: 5
+		PropertyTemplate: "FbxDisplayLayer" {
+			Properties70:  {
+				P: "Color", "ColorRGB", "Color", "",0.8,0.8,0.8
+				P: "Show", "bool", "", "",1
+				P: "Freeze", "bool", "", "",0
+				P: "LODBox", "bool", "", "",0
+			}
+		}
+	}
 }
 
 ; Object properties
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2770569605504, "Geometry::", "Mesh" {
+	Geometry: 1492576786320, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0,0,0
 		}
@@ -274,10 +285,10 @@ Objects:  {
 		LayerElementMaterial: 0 {
 			Version: 101
 			Name: ""
-			MappingInformationType: "AllSame"
+			MappingInformationType: "ByPolygon"
 			ReferenceInformationType: "IndexToDirect"
-			Materials: *1 {
-				a: 0
+			Materials: *56 {
+				a: 0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0
 			} 
 		}
 		Layer: 0 {
@@ -296,7 +307,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2770764017536, "Model::Msh_book", "Mesh" {
+	Model: 1491624318080, "Model::Msh_book", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
@@ -310,7 +321,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2770346842240, "Material::Material #25", "" {
+	Material: 1492161431184, "Material::Mat_book", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -332,6 +343,57 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
+	Material: 1492161433584, "Material::Mat_bookPaper", "" {
+		Version: 102
+		ShadingModel: "phong"
+		MultiLayer: 0
+		Properties70:  {
+			P: "ShadingModel", "KString", "", "", "phong"
+			P: "EmissiveFactor", "Number", "", "A",0
+			P: "AmbientColor", "Color", "", "A",0.587999999523163,0.587999999523163,0.587999999523163
+			P: "DiffuseColor", "Color", "", "A",0.587999999523163,0.587999999523163,0.587999999523163
+			P: "TransparentColor", "Color", "", "A",1,1,1
+			P: "SpecularColor", "Color", "", "A",0.899999976158142,0.899999976158142,0.899999976158142
+			P: "SpecularFactor", "Number", "", "A",0
+			P: "ShininessExponent", "Number", "", "A",2
+			P: "Emissive", "Vector3D", "Vector", "",0,0,0
+			P: "Ambient", "Vector3D", "Vector", "",0.587999999523163,0.587999999523163,0.587999999523163
+			P: "Diffuse", "Vector3D", "Vector", "",0.587999999523163,0.587999999523163,0.587999999523163
+			P: "Specular", "Vector3D", "Vector", "",0,0,0
+			P: "Shininess", "double", "Number", "",2
+			P: "Opacity", "double", "Number", "",1
+			P: "Reflectivity", "double", "Number", "",0
+		}
+	}
+	CollectionExclusive: 1491769977600, "DisplayLayer::Board", "DisplayLayer" {
+		Properties70:  {
+			P: "Color", "ColorRGB", "Color", "",0,0,0
+			P: "Show", "bool", "", "",0
+		}
+	}
+	CollectionExclusive: 1491769971648, "DisplayLayer::Grass_square", "DisplayLayer" {
+		Properties70:  {
+			P: "Color", "ColorRGB", "Color", "",0,0,0
+			P: "Show", "bool", "", "",0
+		}
+	}
+	CollectionExclusive: 1491769977024, "DisplayLayer::Rock", "DisplayLayer" {
+		Properties70:  {
+			P: "Color", "ColorRGB", "Color", "",0,0,0
+			P: "Show", "bool", "", "",0
+		}
+	}
+	CollectionExclusive: 1491769980864, "DisplayLayer::TrunK", "DisplayLayer" {
+		Properties70:  {
+			P: "Color", "ColorRGB", "Color", "",0,0,0
+			P: "Show", "bool", "", "",0
+		}
+	}
+	CollectionExclusive: 1491769982592, "DisplayLayer::Tree_square", "DisplayLayer" {
+		Properties70:  {
+			P: "Color", "ColorRGB", "Color", "",0,0,0
+		}
+	}
 }
 
 ; Object connections
@@ -340,11 +402,14 @@ Objects:  {
 Connections:  {
 	
 	;Model::Msh_book, Model::RootNode
-	C: "OO",2770764017536,0
+	C: "OO",1491624318080,0
 	
 	;Geometry::, Model::Msh_book
-	C: "OO",2770569605504,2770764017536
+	C: "OO",1492576786320,1491624318080
 	
-	;Material::Material #25, Model::Msh_book
-	C: "OO",2770346842240,2770764017536
+	;Material::Mat_book, Model::Msh_book
+	C: "OO",1492161431184,1491624318080
+	
+	;Material::Mat_bookPaper, Model::Msh_book
+	C: "OO",1492161433584,1491624318080
 }
