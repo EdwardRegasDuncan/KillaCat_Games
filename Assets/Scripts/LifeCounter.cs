@@ -5,7 +5,7 @@ using UnityEngine;
 public class LifeCounter : MonoBehaviour
 {
     const float RotationPerNumber = -36f;
-    const float RotationSpeed = -90.0f;
+    const float RotationSpeed = 90.0f;
 
     public Transform TensRotor;
     public Transform UnitRotor;
@@ -14,8 +14,8 @@ public class LifeCounter : MonoBehaviour
     int Units = 0;
     bool TensinMovement = false;
     bool UnitsinMovement = false;
-    Vector3 tensRotationTarget;
-    Vector3 unitsRotationTarget;
+    Quaternion tensRotationTarget;
+    Quaternion unitsRotationTarget;
 
     public void SetHealth(int heath, bool noMovement = false)
     {
@@ -25,18 +25,18 @@ public class LifeCounter : MonoBehaviour
         if (tens != Tens)
         {
             Tens = tens;
-            tensRotationTarget = new Vector3(Tens * RotationPerNumber + 360, 0.0f, 0.0f);
+            tensRotationTarget = Quaternion.Euler(Tens * RotationPerNumber + 360, 0.0f, 0.0f);
             if (noMovement)
-                TensRotor.localEulerAngles = tensRotationTarget;
+                TensRotor.localRotation = tensRotationTarget;
             else
                 TensinMovement = true;
         }
         if (units != Units)
         {
             Units = units;
-            unitsRotationTarget = new Vector3(Units * RotationPerNumber + 360, 0.0f, 0.0f);
+            unitsRotationTarget = Quaternion.Euler(Units * RotationPerNumber + 360, 0.0f, 0.0f);
             if (noMovement)
-                UnitRotor.localEulerAngles = unitsRotationTarget;
+                UnitRotor.localRotation = unitsRotationTarget;
             else
                 UnitsinMovement = true;
         }
@@ -48,20 +48,20 @@ public class LifeCounter : MonoBehaviour
         {
             TensRotor.Rotate(Vector3.right * RotationSpeed * Time.deltaTime, Space.Self);
 
-            if (Mathf.Abs(TensRotor.localEulerAngles.x - tensRotationTarget.x) < 0.5f)
+            if (Quaternion.Angle(tensRotationTarget, TensRotor.localRotation) <= 1.0f)
             {
                 TensinMovement = false;
-                TensRotor.localEulerAngles = tensRotationTarget;
+                TensRotor.localRotation = tensRotationTarget;
             }
         }
         if (UnitsinMovement)
         {
             UnitRotor.Rotate(Vector3.right * RotationSpeed * Time.deltaTime, Space.Self);
 
-            if (Mathf.Abs(UnitRotor.localEulerAngles.x - unitsRotationTarget.x) < 0.5f)
+            if (Quaternion.Angle(unitsRotationTarget, UnitRotor.localRotation) <= 1.0f)
             {
                 UnitsinMovement = false;
-                UnitRotor.localEulerAngles = unitsRotationTarget;
+                UnitRotor.localRotation = unitsRotationTarget;
             }
         }
 
