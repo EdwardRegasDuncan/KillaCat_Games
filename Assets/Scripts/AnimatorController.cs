@@ -10,7 +10,8 @@ public class AnimatorController
         ATTACK_CROSSBOW = 3,
         DIE = 4,
         MOVMENT = 5,
-        COUNT = 6
+        HIT = 6,
+        COUNT = 7
     }
 
     public Animator animatior;
@@ -36,10 +37,13 @@ public class AnimatorController
                 animatior.Play("Melee");
                 break;
             case UNIT_STATE.ATTACK_CROSSBOW:
-                animatior.Play("Crossbow");
+                animatior.Play("Melee_archer");
+                break;
+            case UNIT_STATE.HIT:
+                animatior.Play("Hit");
                 break;
             case UNIT_STATE.ATTACK_SPELL:
-                animatior.Play("Spell");
+                animatior.Play("Melee_wizard");
                 break;
             case UNIT_STATE.DIE:
                 animatior.Play("Death");

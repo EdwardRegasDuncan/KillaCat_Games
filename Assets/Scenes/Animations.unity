@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1447027837540946691, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.32
+      objectReference: {fileID: 0}
     - target: {fileID: 8063707489064908912, guid: ce4b56c2ec307c04c8f8e90b6cc23335, type: 3}
       propertyPath: m_Name
       value: Archer
@@ -381,6 +385,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5685229150734181121, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.42
+      objectReference: {fileID: 0}
     - target: {fileID: 9175248016683701169, guid: 8460ee2c6d53e8644abe1eedabe2b199, type: 3}
       propertyPath: m_Name
       value: Knight
@@ -438,6 +446,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1741613293395804393, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.64
+      objectReference: {fileID: 0}
     - target: {fileID: 1741613294947419201, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -460,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8150051861903881243, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 8150051861903881243, guid: db273612b8e2c4e40845ea4add1f4fd7, type: 3}
       propertyPath: m_LocalPosition.z

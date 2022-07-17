@@ -21,6 +21,8 @@ public enum GAME_STATES
 
 public class GameManager : MonoBehaviour
 {
+    const int MaxHealth = 20;
+
     public static GameManager Instance;
 
     [Header("Managers")]
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
 
     GridNode GridNode;
 
+    int PlayerHealth;
+    int EnemyHealth;
     int Score = 0;
     bool Waiting = false;
 
@@ -74,6 +78,11 @@ public class GameManager : MonoBehaviour
             Score += 10;
             UIManager.UpdateScore(Score);
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            PlayerHealth -= 1;
+            PlayerLifeCounter.SetHealth(PlayerHealth);
+        }
     }
 
     public void ChangeScreen(SCREENS newScreen)
@@ -87,8 +96,11 @@ public class GameManager : MonoBehaviour
                 break;
             case SCREENS.IN_GAME:
                 CameraManager.SetBoardCamera();
-                PlayerLifeCounter.SetHealth(99);
-                EnemyLifeCounter.SetHealth(99);
+
+                PlayerHealth = MaxHealth;
+                EnemyHealth = MaxHealth;
+                PlayerLifeCounter.SetHealth(PlayerHealth);
+                EnemyLifeCounter.SetHealth(EnemyHealth);
                 GameState = GAME_STATES.ROLL_STAGE;
                 EnterState();
                 break;
@@ -128,7 +140,7 @@ public class GameManager : MonoBehaviour
 
         // Create dices
         DiceManager.CreateDices(false, DiceAmounts);
-        DiceManager.CreateDices(true, DiceAmounts);
+        DiceManager.CreateDices(true, EnemyDiceAmounts);
 
         // Show inventory dices
         DiceManager.PlaceDicesInInventory(true);
