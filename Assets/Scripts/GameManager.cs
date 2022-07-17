@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         UIManager.ShowPressKeyText(false);
 
         // Toss the dices
-        DiceManager.TossDices(EnemyPos.localPosition, -800, PlayerPos.localPosition, 1000);
+        DiceManager.TossDices(PlayerPos.localPosition, -800, EnemyPos.localPosition, 1000);
 
         // Waiting the dices values
         Waiting = true;
