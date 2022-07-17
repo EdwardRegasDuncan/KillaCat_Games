@@ -37,8 +37,7 @@ public class GenerateTerrain : MonoBehaviour
                 // pick a random tile
                 int tileIndex = Random.Range(0, _tiles.Length);
                 // randome 90 degree rotation
-                int rotation = Random.Range(0, 4);
-                Quaternion rotationQuaternion = Quaternion.Euler(-90, rotation * 90, 0);
+                Quaternion rotationQuaternion = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0);
                 // instantiate the tile
                 GameObject tile = Instantiate(_tiles[tileIndex], child.transform.position, rotationQuaternion);
                 // set the parent to the child

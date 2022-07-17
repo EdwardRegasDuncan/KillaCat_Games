@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Misc")]
     public int[] DiceAmounts;
+    public int[] EnemyDiceAmounts;
+    public LifeCounter PlayerLifeCounter;
+    public LifeCounter EnemyLifeCounter;
     public Transform PlayerSide;
     public Transform EnemySide;
     public UnityEvent ResetGrid;
@@ -84,6 +87,8 @@ public class GameManager : MonoBehaviour
                 break;
             case SCREENS.IN_GAME:
                 CameraManager.SetBoardCamera();
+                PlayerLifeCounter.SetHealth(99);
+                EnemyLifeCounter.SetHealth(99);
                 GameState = GAME_STATES.ROLL_STAGE;
                 EnterState();
                 break;
