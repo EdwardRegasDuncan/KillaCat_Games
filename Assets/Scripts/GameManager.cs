@@ -8,9 +8,8 @@ public enum SCREENS
     MENUS = 0,
     IN_GAME = 1,
     RESULT = 2,
-    SETTINGS = 3,
-    HELP = 4,
-    CREDITS = 5
+    HELP = 3,
+    CREDITS = 4
 }
 
 public enum GAME_STATES
