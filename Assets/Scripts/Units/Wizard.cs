@@ -18,5 +18,4 @@ public class Wizard : UnitCore
         _Armour = 0f;
         _ArmourPiercing = 50f;
     }
-    
 }
