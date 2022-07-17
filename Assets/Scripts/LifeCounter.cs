@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LifeCounter : MonoBehaviour
 {
-    const float RotationPerNumber = 36f;
-    const float RotationSpeed = 90.0f;
+    const float RotationPerNumber = -36f;
+    const float RotationSpeed = -90.0f;
 
     public Transform TensRotor;
     public Transform UnitRotor;
@@ -25,7 +25,7 @@ public class LifeCounter : MonoBehaviour
         if (tens != Tens)
         {
             Tens = tens;
-            tensRotationTarget = new Vector3(Tens * RotationPerNumber, 0.0f, 0.0f);
+            tensRotationTarget = new Vector3(Tens * RotationPerNumber + 360, 0.0f, 0.0f);
             if (noMovement)
                 TensRotor.localEulerAngles = tensRotationTarget;
             else
@@ -34,7 +34,7 @@ public class LifeCounter : MonoBehaviour
         if (units != Units)
         {
             Units = units;
-            unitsRotationTarget = new Vector3(Units * RotationPerNumber, 0.0f, 0.0f);
+            unitsRotationTarget = new Vector3(Units * RotationPerNumber + 360, 0.0f, 0.0f);
             if (noMovement)
                 UnitRotor.localEulerAngles = unitsRotationTarget;
             else

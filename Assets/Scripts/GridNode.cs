@@ -6,6 +6,7 @@ public class GridNode : MonoBehaviour
 {
     public bool Used = false;
 
+    public Transform UnitPlacement;
     public int NumberPositions = 0;
 
     List<GameObject> InstantiatedUnits = new List<GameObject>();
@@ -15,7 +16,7 @@ public class GridNode : MonoBehaviour
     {
         GameManager.Instance.ResetGrid.AddListener(ResetGridNode);
 
-        NumberPositions = transform.childCount;
+        NumberPositions = UnitPlacement.childCount;
     }
 
     void OnDestroy()
@@ -53,12 +54,11 @@ public class GridNode : MonoBehaviour
         for (int i = 0; i < aux; ++i)
         {
             GameObject gameObject = Instantiate(
-                prefab, 
-                transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f), 
+                prefab,
+                UnitPlacement.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f), 
                 Quaternion.Euler(0.0f, (team == UnitCore.Team.Player) ? -90.0f : 90.0f, 0.0f), 
                 container
             );
-            gameObject.transform.position = transform.GetChild(i).position + new Vector3(0.0f, 2.5f, 0.0f);
             gameObject.GetComponent<UnitCore>().team = team;
             InstantiatedUnits.Add(gameObject);
         }
