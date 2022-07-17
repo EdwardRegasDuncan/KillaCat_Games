@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AnimatorController
+public class AnimatorController : MonoBehaviour
 {
     public enum UNIT_STATE
     {
@@ -18,6 +18,14 @@ public class AnimatorController
     public UnitCore unitCore;
 
     UNIT_STATE previus_state = UNIT_STATE.ANY;
+
+    private void Update()
+    { 
+        if (unitCore)
+        {
+            ChangeAnim();
+        }
+    }
 
     public void ChangeAnim()
     {
