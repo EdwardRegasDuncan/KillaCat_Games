@@ -8,7 +8,6 @@ public class UIManager : MonoBehaviour
 {
     public GameObject Menu;
     public GameObject InGame;
-    public GameObject Settings;
     public GameObject Help;
     public GameObject Credits;
 
@@ -63,7 +62,6 @@ public class UIManager : MonoBehaviour
     {
         Menu.SetActive(false);
         InGame.SetActive(false);
-        Settings.SetActive(false);
         Help.SetActive(false);
         Credits.SetActive(false);
         
@@ -77,9 +75,6 @@ public class UIManager : MonoBehaviour
                 InGame.SetActive(true);
                 break;
             case SCREENS.RESULT:
-                break;
-            case SCREENS.SETTINGS:
-                Settings.SetActive(true);
                 break;
             case SCREENS.HELP:
                 Help.SetActive(true);
@@ -111,12 +106,6 @@ public class UIManager : MonoBehaviour
     {
         SoundManager.PlaySound(SoundManager.Sound.UISound);
         GameManager.Instance.ActionEnded();
-    }
-
-    public void SettingsClicked()
-    {
-        SoundManager.PlaySound(SoundManager.Sound.UISound);
-        GameManager.Instance.ChangeScreen(SCREENS.SETTINGS);
     }
     
     public void HelpClicked()
