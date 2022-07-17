@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
@@ -35,15 +33,19 @@ public class AnimatorController : MonoBehaviour
         switch (current_state)
         {
             case UNIT_STATE.ATTACK_MELEE:
-                // animatior.Pla
+                animatior.Play("Melee");
                 break;
             case UNIT_STATE.ATTACK_CROSSBOW:
+                animatior.Play("Crossbow");
                 break;
             case UNIT_STATE.ATTACK_SPELL:
+                animatior.Play("Spell");
                 break;
             case UNIT_STATE.DIE:
+                animatior.Play("Death");
                 break;
             case UNIT_STATE.MOVMENT:
+                animatior.Play("Move");
                 break;
             case UNIT_STATE.ANY:
             default:

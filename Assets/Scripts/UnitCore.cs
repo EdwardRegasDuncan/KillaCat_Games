@@ -84,7 +84,7 @@ public class UnitCore : MonoBehaviour
 
     public bool FindTarget()
     {
-
+        current_state = AnimatorController.UNIT_STATE.MOVMENT;
         Team targetTag = team == Team.Player ? Team.Enemy : Team.Player;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(targetTag.ToString());
         if (enemies.Length == 0)
@@ -131,6 +131,7 @@ public class UnitCore : MonoBehaviour
         {
             _isAlive = false;
             SoundManager.PlaySound(SoundManager.Sound.TropDead);
+            current_state = AnimatorController.UNIT_STATE.DIE;
         }
     }
 
@@ -195,12 +196,15 @@ public class UnitCore : MonoBehaviour
             switch(_type)
             {
                 case UNIT_TYPE.ARCHER:
+                    current_state = AnimatorController.UNIT_STATE.ATTACK_CROSSBOW;
                     SoundManager.PlaySound(SoundManager.Sound.TropShooting, transform.localPosition);
                     break;
                 case UNIT_TYPE.KNIGHT:
+                    current_state = AnimatorController.UNIT_STATE.ATTACK_MELEE;
                     SoundManager.PlaySound(SoundManager.Sound.TropAttack, transform.localPosition);
                     break;
                 case UNIT_TYPE.WIZARD:
+                    current_state = AnimatorController.UNIT_STATE.ATTACK_SPELL;
                     SoundManager.PlaySound(SoundManager.Sound.TropSpell, transform.localPosition);
                     break;
                 default:
