@@ -19,7 +19,7 @@ public class Archer : UnitCore
         _Speed = 5f;
         _AttackDamage = 5f;
         _AttackSpeed = 0.5f;
-        _Range = 15f;
+        _Range = 100f;
         _Armour = 5f;
         _ArmourPiercing = 0f;
 

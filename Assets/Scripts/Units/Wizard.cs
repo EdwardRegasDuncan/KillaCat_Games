@@ -8,16 +8,15 @@ public class Wizard : UnitCore
     float _specialCharge;
     float _chargeRate;
     public GameObject _magicBlast;
-    [SerializeField] Transform _spawnPoint;
 
     private void Awake()
     {
         _type = UNIT_TYPE.WIZARD;
         _HP = 50;
         _Speed = 15f;
-        _AttackDamage = 0f;
+        _AttackDamage = 50f;
         _AttackSpeed = 2.0f;
-        _Range = 100f;
+        _Range = 50f;
         _Armour = 0f;
         _ArmourPiercing = 50f;
 
@@ -28,7 +27,7 @@ public class Wizard : UnitCore
     
     private void MagicParticle(object sender, EventArgs e)
     {
-        GameObject arrow = Instantiate(_magicBlast, _spawnPoint.position, transform.rotation, transform);
+        GameObject arrow = Instantiate(_magicBlast, transform.position, transform.rotation, transform);
         arrow.GetComponent<ProjectileController>()._target = _target;
     }
     

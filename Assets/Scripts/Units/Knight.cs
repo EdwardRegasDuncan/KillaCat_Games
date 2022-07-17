@@ -15,7 +15,7 @@ public class Knight : UnitCore
         _Speed = 7f;
         _AttackDamage = 20f;
         _AttackSpeed = 1.0f;
-        _Range = 2f;
+        _Range = 10f;
         _Armour = 30f;
         _ArmourPiercing = 10f;
 
