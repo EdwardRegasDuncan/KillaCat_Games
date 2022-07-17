@@ -34,16 +34,16 @@ public class AnimatorController
         switch (current_state)
         {
             case UNIT_STATE.ATTACK_MELEE:
-                animatior.Play("Melee");
+                animatior.Play("Attack");
                 break;
             case UNIT_STATE.ATTACK_CROSSBOW:
-                animatior.Play("Melee_archer");
+                animatior.Play("Attack");
                 break;
             case UNIT_STATE.HIT:
                 animatior.Play("Hit");
                 break;
             case UNIT_STATE.ATTACK_SPELL:
-                animatior.Play("Melee_wizard");
+                animatior.Play("Attack");
                 break;
             case UNIT_STATE.DIE:
                 animatior.Play("Death");
