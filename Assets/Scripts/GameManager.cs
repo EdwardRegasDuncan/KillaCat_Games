@@ -49,8 +49,8 @@ public class GameManager : MonoBehaviour
 
     GridNode GridNode;
 
-    int PlayerHealth;
-    int EnemyHealth;
+    [SerializeField] int PlayerHealth;
+    [SerializeField] int EnemyHealth;
     int Score = 0;
     bool Waiting = false;
 
@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
             PlayerHealth -= 1;
             PlayerLifeCounter.SetHealth(PlayerHealth);
         }
+        PlayerLifeCounter.SetHealth(PlayerHealth);
+        EnemyLifeCounter.SetHealth(EnemyHealth);
     }
 
     public void ChangeScreen(SCREENS newScreen)
@@ -99,8 +101,6 @@ public class GameManager : MonoBehaviour
 
                 PlayerHealth = MaxHealth;
                 EnemyHealth = MaxHealth;
-                PlayerLifeCounter.SetHealth(PlayerHealth);
-                EnemyLifeCounter.SetHealth(EnemyHealth);
                 GameState = GAME_STATES.ROLL_STAGE;
                 EnterState();
                 break;
@@ -286,15 +286,33 @@ public class GameManager : MonoBehaviour
             enemyUnit.GetComponent<UnitCore>().UnPause();
 
         // TODO: make the units fight
+        while (PlayerUnitContainer.transform.childCount > 0 && EnemyUnitContainer.transform.childCount > 0)
+        {
+            yield return null;
+        }
 
-        yield return null;
+        ChangeState();
     }
 
     IEnumerator DamagePhase()
-    { 
-        yield return null;
+    {
+        // who has units left
+        if (PlayerUnitContainer.transform.childCount > 0)
+        {
+            EnemyHealth -= PlayerUnitContainer.transform.childCount;
+        }
+        else if (EnemyUnitContainer.transform.childCount > 0)
+        {
+            PlayerHealth -= EnemyUnitContainer.transform.childCount;
+        }
+        else
+        {
+            Debug.Log($"Error Occured calculating winner; Player count: {PlayerUnitContainer.transform.childCount}, Enemy count: {EnemyUnitContainer.transform.childCount}");
+            yield return null;
+        }
 
         ResetGrid.Invoke();
+        ChangeState();
     }
 
     void ChangeState()
