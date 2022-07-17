@@ -217,7 +217,6 @@ MonoBehaviour:
   UnitType: 0
   DiceValue: -1
   Triggers: {fileID: 6986843322919008842}
-  Renderer: {fileID: 7080127625134053694}
 --- !u!1 &4495054953262567053
 GameObject:
   m_ObjectHideFlags: 0
