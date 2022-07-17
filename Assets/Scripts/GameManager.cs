@@ -251,7 +251,6 @@ public class GameManager : MonoBehaviour
                         GridNode.GetComponent<GridNode>().InstantiateUnits(UnitPrefabs[(int)playerDices[playerIdx].UnitType], playerDices[playerIdx].DiceValue, UnitCore.Team.Player, PlayerUnitContainer);
                         GridNode = null;
 
-
                         playerIdx += 1;
                     }
                 }
@@ -344,7 +343,7 @@ public class GameManager : MonoBehaviour
 
         int grid = Random.Range(0, EnemySide.childCount);
         GridNode gridNode = EnemySide.GetChild(grid).GetComponent<GridNode>();
-        while (gridNode.Used)
+        while (gridNode == null || gridNode.Used)
         {
             grid = Random.Range(0, EnemySide.childCount);
             gridNode = EnemySide.GetChild(grid).GetComponent<GridNode>();

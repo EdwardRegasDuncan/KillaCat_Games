@@ -17,34 +17,38 @@ public class GenerateTerrain : MonoBehaviour
 
     public void Generate()
     {
-        // combine children of _playerside and _enemyside into one array
-        List<GameObject> _allTiles = new List<GameObject>();
+        List<Transform> childs = new List<Transform>();
         foreach (Transform child in _playerSide.transform)
+            childs.Add(child);
+        foreach (Transform child in childs)
         {
-            _allTiles.Add(child.gameObject);
-        }
-        foreach (Transform child in _enemySide.transform)
-        {
-            _allTiles.Add(child.gameObject);
+            // pick a random tile
+            int tileIndex = Random.Range(0, _tiles.Length);
+            // randome 90 degree rotation
+            Quaternion rotationQuaternion = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0);
+            // instantiate the tile
+            GameObject tile = Instantiate(_tiles[tileIndex], child.transform.position, rotationQuaternion);
+            // set the parent to the child
+            tile.transform.parent = _playerSide.transform;
+            // scale the tile
+            tile.transform.localScale = child.transform.localScale;
         }
 
-        // interate through each child of _playerside
-        foreach (GameObject child in _allTiles)
+        childs.Clear();
+        foreach (Transform child in _enemySide.transform)
+            childs.Add(child);
+        foreach (Transform child in childs)
         {
-            // should be a tile?
-            if (Random.Range(1, 100) < 25)
-            {
-                // pick a random tile
-                int tileIndex = Random.Range(0, _tiles.Length);
-                // randome 90 degree rotation
-                Quaternion rotationQuaternion = Quaternion.Euler(-90, Random.Range(0, 4) * 90, 0);
-                // instantiate the tile
-                GameObject tile = Instantiate(_tiles[tileIndex], child.transform.position, rotationQuaternion);
-                // set the parent to the child
-                tile.transform.parent = child.transform;
-                // scale the tile
-                tile.transform.localScale = child.transform.localScale;
-            }
+            // pick a random tile
+            int tileIndex = Random.Range(0, _tiles.Length);
+            // randome 90 degree rotation
+            Quaternion rotationQuaternion = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0);
+            // instantiate the tile
+            GameObject tile = Instantiate(_tiles[tileIndex], child.transform.position, rotationQuaternion);
+            // set the parent to the child
+            tile.transform.parent = _enemySide.transform;
+            // scale the tile
+            tile.transform.localScale = child.transform.localScale;
         }
     }
     private void OnDrawGizmos()

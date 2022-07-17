@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DiceManager : MonoBehaviour
 {
-    const float DistanceBetweenDices = 4.0f;
+    const float DistanceBetweenDices = 6.0f;
 
 
     [Header("Each element is a dice type (D4/D6/D10)")]
@@ -181,7 +181,7 @@ public class DiceManager : MonoBehaviour
 
     public void PlaceDicesInFrontOfCamera()
     {
-        const float distance = 10.0f;
+        const float distance = 16.0f;
 
         int diceAmount = 0;
         for (int i = 0; i < (int)DICES.COUNT; ++i)

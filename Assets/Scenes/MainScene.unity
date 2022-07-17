@@ -405,7 +405,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783251, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1392,7 +1392,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783251, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1576,7 +1576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393267081336091375, guid: acd12048430ee914b8646a6bce092017, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -541.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3393267081336091375, guid: acd12048430ee914b8646a6bce092017, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1854,7 +1854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3910513622650548571, guid: 989650cb947ff774c9fd7772846dd220, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3910513622650548575, guid: 989650cb947ff774c9fd7772846dd220, type: 3}
       propertyPath: m_Pivot.x
@@ -2029,10 +2029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3722,13 +3722,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 650201668}
     m_Modifications:
+    - target: {fileID: 7910101798121773701, guid: 6547f02525ff84c4da8374001f23120f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910101798121773701, guid: 6547f02525ff84c4da8374001f23120f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910101798121773701, guid: 6547f02525ff84c4da8374001f23120f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -89.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7910101798536328158, guid: 6547f02525ff84c4da8374001f23120f, type: 3}
       propertyPath: m_Name
       value: Main
       objectReference: {fileID: 0}
     - target: {fileID: 7910101798536328158, guid: 6547f02525ff84c4da8374001f23120f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7910101798536328165, guid: 6547f02525ff84c4da8374001f23120f, type: 3}
       propertyPath: m_Pivot.x
@@ -3934,13 +3946,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5530376958787553160, guid: 92c6d251def66064595f133a7df57930, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1331578675}
+    - target: {fileID: 5530376958787553160, guid: 92c6d251def66064595f133a7df57930, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReadyClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530376958787553160, guid: 92c6d251def66064595f133a7df57930, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.49999985
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_RootOrder
@@ -3952,7 +3976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3960,7 +3984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4000,11 +4024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -541.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -563.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256611121814656857, guid: 92c6d251def66064595f133a7df57930, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4271,7 +4295,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783251, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4580,7 +4604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4266544208461712083, guid: 9ab521e3ef8d7664ea30c5fa0cacc1d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -541.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4266544208461712083, guid: 9ab521e3ef8d7664ea30c5fa0cacc1d0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4704,7 +4728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3910513622650548575, guid: 989650cb947ff774c9fd7772846dd220, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3910513622650548575, guid: 989650cb947ff774c9fd7772846dd220, type: 3}
       propertyPath: m_AnchorMax.x
