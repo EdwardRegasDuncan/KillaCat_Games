@@ -337,3 +337,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4684367618354620958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946466028727772431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee4143fc74064741a410aead9ffb145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatior: {fileID: 3324776278169305768}
+  unitCore: {fileID: 553505387422503771}
