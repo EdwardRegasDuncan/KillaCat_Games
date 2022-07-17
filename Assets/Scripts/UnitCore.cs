@@ -127,6 +127,8 @@ public class UnitCore : MonoBehaviour
         healthBar.SetHealth(_HP);
         SoundManager.PlaySound(SoundManager.Sound.TropReciveHit);
 
+        current_state = AnimatorController.UNIT_STATE.HIT;
+
         if (_HP <= 0)
         {
             _isAlive = false;
