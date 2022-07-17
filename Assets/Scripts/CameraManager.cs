@@ -7,7 +7,8 @@ public class CameraManager : MonoBehaviour
 {
     public CinemachineVirtualCamera MenuVCam; 
     public CinemachineVirtualCamera BoardVCam; 
-    public CinemachineVirtualCamera PlayerInventoryVCam; 
+    public CinemachineVirtualCamera PlayerInventoryVCam;
+    public CinemachineVirtualCamera BatlleCamera;
 
     void ResetCameraPriorities()
     {
@@ -32,5 +33,11 @@ public class CameraManager : MonoBehaviour
     {
         ResetCameraPriorities();
         PlayerInventoryVCam.Priority = 10;
+    }
+
+    public void SetBattleGroundCamera()
+    {
+        ResetCameraPriorities();
+        BatlleCamera.Priority = 10;
     }
 }

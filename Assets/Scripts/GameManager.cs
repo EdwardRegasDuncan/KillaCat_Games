@@ -290,6 +290,9 @@ public class GameManager : MonoBehaviour
     IEnumerator Combat()
     {
 
+        CameraManager.SetBattleGroundCamera();
+        yield return new WaitForSeconds(1.0f);
+
         foreach (Transform playerUnit in PlayerUnitContainer)
             playerUnit.GetComponent<UnitCore>().UnPause();
         foreach (Transform enemyUnit in EnemyUnitContainer)
